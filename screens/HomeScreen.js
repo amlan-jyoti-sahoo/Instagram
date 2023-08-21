@@ -10,6 +10,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {UserData} from '../data/userData';
 
 const HomeScreen = () => {
@@ -18,7 +19,7 @@ const HomeScreen = () => {
       <View style={{height: 100, width: 100}}>
         <View
           style={
-            item.hasStatus ? styles.imageCotainer : styles.statusImageContainer
+            item.hasStatus ? styles.statusImageContainer : styles.imageCotainer
           }>
           <Image
             source={item.profileImage}
@@ -37,7 +38,7 @@ const HomeScreen = () => {
 
   const renderPosts = ({item}) => {
     return (
-      <>
+      <View style={styles.PostRootCotainer}>
         <View
           style={{
             height: 50,
@@ -56,21 +57,18 @@ const HomeScreen = () => {
                 borderRadius: 50,
                 justifyContent: 'center',
                 alignItems: 'center',
+                marginHorizontal: 10,
               }}>
               <Image
                 source={require('../assets/images/Shubham.png')}
-                style={{height: 35, width: 35, borderRadius: 50}}
+                style={{
+                  height: 35,
+                  width: 35,
+                  borderRadius: 50,
+                }}
               />
             </View>
-            <Text
-              style={{
-                color: 'black',
-                fontSize: 13,
-                fontWeight: '500',
-                marginLeft: 10,
-              }}>
-              Shubham Kadam
-            </Text>
+            <Text style={styles.textBold}>Shubham Kadam</Text>
           </View>
           <Icon
             style={{marginRight: 10}}
@@ -91,15 +89,37 @@ const HomeScreen = () => {
             width: '100%',
             flexDirection: 'row',
             alignItems: 'center',
-            marginLeft: 10,
+            justifyContent: 'space-between',
           }}>
-          <View style={{flexDirection: 'row'}}>
-            <Icon name="heart-outline" size={30} color={'black'} />
-            {/* <Icon name="" size={30} color={'black'} />
-              <Icon name="s" size={30} color={'black'} /> */}
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginLeft: 10,
+              width: 130,
+            }}>
+            <MaterialCommunityIcons
+              name="cards-heart-outline"
+              size={30}
+              color={'black'}
+            />
+            <FeatherIcon
+              style={{transform: [{rotateY: '180deg'}]}}
+              name="message-circle"
+              size={30}
+              color={'black'}
+            />
+            <FeatherIcon name="send" size={30} color={'black'} />
           </View>
+          <MaterialCommunityIcons
+            style={{marginRight: 10}}
+            name="bookmark-outline"
+            size={30}
+            color={'black'}
+          />
         </View>
-      </>
+        <Text style={[styles.textBold, {marginLeft: 10}]}>279 likes</Text>
+      </View>
     );
   };
   return (
@@ -123,7 +143,11 @@ const HomeScreen = () => {
               size={17}
               color={'red'}
             />
-            <Icon name="heart-outline" size={30} color={'black'} />
+            <MaterialCommunityIcons
+              name="cards-heart-outline"
+              size={30}
+              color={'black'}
+            />
           </View>
           <View style={styles.upperHeaderInnerContainer}>
             <FeatherIcon name="message-circle" size={30} color={'black'} />
@@ -185,6 +209,14 @@ const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
   },
+  textBold: {
+    color: 'black',
+    fontWeight: '500',
+  },
+  textNormal: {
+    color: 'black',
+    fontWeight: '200',
+  },
   upperHeaderContainer: {
     height: 50,
     width: '100%',
@@ -198,10 +230,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   imageCotainer: {
-    borderWidth: 3,
     height: 90,
     width: 90,
-    borderColor: '#b42727',
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
@@ -215,10 +245,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   statusImageContainer: {
+    borderWidth: 3,
     height: 90,
     width: 90,
+    borderColor: '#b42727',
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  PostRootCotainer: {
+    marginBottom: 10,
   },
 });
