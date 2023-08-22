@@ -141,7 +141,12 @@ const ProfileScreen = () => {
           />
         </View>
         <View style={styles.allPostContainer}>
-          <FlatList numColumns={3} data={post} renderItem={renderPosts} />
+          <FlatList
+            numColumns={3}
+            scrollEnabled={true}
+            data={post}
+            renderItem={renderPosts}
+          />
         </View>
       </View>
     </View>

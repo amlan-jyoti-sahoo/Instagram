@@ -1,9 +1,60 @@
 export const PostData = [
   {
-    userId: 2,
+    userId: 1,
     post: {
       postId: 1,
       postImage: require('../assets/images/Mountain.jpeg'),
+      likes: 100,
+      isLiked: true,
+      isBookmarked: false,
+    },
+    reel: {
+      reelId: 1,
+      video: '',
+      likes: 0,
+      isLiked: false,
+      isBookmarked: false,
+    },
+  },
+  {
+    userId: 3,
+    post: {
+      postId: 1,
+      postImage: require('../assets/images/delhi.jpg'),
+      likes: 100,
+      isLiked: true,
+      isBookmarked: false,
+    },
+    reel: {
+      reelId: 1,
+      video: '',
+      likes: 0,
+      isLiked: false,
+      isBookmarked: false,
+    },
+  },
+  {
+    userId: 2,
+    post: {
+      postId: 1,
+      postImage: require('../assets/images/goa1.jpeg'),
+      likes: 100,
+      isLiked: true,
+      isBookmarked: false,
+    },
+    reel: {
+      reelId: 1,
+      video: '',
+      likes: 0,
+      isLiked: false,
+      isBookmarked: false,
+    },
+  },
+  {
+    userId: 5,
+    post: {
+      postId: 1,
+      postImage: require('../assets/images/goa2.jpeg'),
       likes: 100,
       isLiked: true,
       isBookmarked: false,
@@ -34,7 +85,7 @@ export const PostData = [
     },
   },
   {
-    userId: 3,
+    userId: 1,
     post: {
       postId: 3,
       postImage: require('../assets/images/valley.jpeg'),
@@ -51,7 +102,7 @@ export const PostData = [
     },
   },
   {
-    userId: 6,
+    userId: 1,
     post: {
       postId: 4,
       postImage: require('../assets/images/valley2.jpeg'),

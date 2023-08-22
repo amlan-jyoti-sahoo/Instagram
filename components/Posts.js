@@ -151,7 +151,8 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: 10,
+
+    marginHorizontal: 10,
   },
   postHeaderImage: {
     height: 35,
