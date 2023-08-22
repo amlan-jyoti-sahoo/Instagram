@@ -1,11 +1,4 @@
-import {
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Octicons from 'react-native-vector-icons/Octicons';
@@ -17,14 +10,20 @@ import MultiAccount from '../components/Profile/MultiAccount';
 import StoryHighlightContainer from '../components/Profile/StoryHighlightContainer';
 import ProfileData from '../components/Profile/ProfileData';
 import YourPostData from '../components/Profile/YourPostData';
+import Menu from '../components/Profile/Menu';
 
 const ProfileScreen = () => {
   const user = useSelector(state => state.user.userData);
   const post = useSelector(state => state.post.postData);
   const [multiAccountsModal, setMultiAccountsModal] = useState(false);
+  const [menuModal, setMenuModal] = useState(false);
 
   const toggleMultiAccountsModal = () => {
     setMultiAccountsModal(!multiAccountsModal);
+  };
+
+  const toggleMenuModal = () => {
+    setMenuModal(!menuModal);
   };
 
   const filteredPost = post.filter(item => item.userId === 1);
@@ -38,24 +37,16 @@ const ProfileScreen = () => {
           <TouchableOpacity onPress={toggleMultiAccountsModal}>
             <Octicons name="chevron-down" size={20} color="black" />
           </TouchableOpacity>
+
           <Octicons name="dot-fill" size={17} color={'red'} />
         </View>
         <View style={styles.upperHeaderInnerRightContainer}>
           <FontAwesome name="plus-square-o" size={28} color="black" />
-          <Feather name="menu" size={32} color="black" />
+          <TouchableOpacity onPress={toggleMenuModal}>
+            <Feather name="menu" size={32} color="black" />
+          </TouchableOpacity>
         </View>
       </View>
-
-      {/* MultiAccountModal */}
-      <Modal
-        testID={'modal'}
-        isVisible={multiAccountsModal}
-        onSwipeComplete={() => {}}
-        swipeDirection={['up', 'left', 'right', 'down']}
-        onBackdropPress={toggleMultiAccountsModal}
-        style={styles.multiAccountsModal}>
-        <MultiAccount />
-      </Modal>
 
       {/* Profile */}
       <ProfileData filteredPost={filteredPost} />
@@ -65,6 +56,28 @@ const ProfileScreen = () => {
 
       {/* Post area */}
       <YourPostData filteredPost={filteredPost} />
+
+      {/* MultiAccountModal */}
+      <Modal
+        testID={'modal'}
+        isVisible={multiAccountsModal}
+        onSwipeComplete={() => {}}
+        swipeDirection={['up', 'left', 'right', 'down']}
+        onBackdropPress={toggleMultiAccountsModal}
+        style={styles.modal}>
+        <MultiAccount />
+      </Modal>
+
+      {/* MenuModal */}
+      <Modal
+        testID={'modal'}
+        isVisible={menuModal}
+        onSwipeComplete={() => {}}
+        swipeDirection={['up', 'left', 'right', 'down']}
+        onBackdropPress={toggleMenuModal}
+        style={styles.modal}>
+        <Menu />
+      </Modal>
     </View>
   );
 };
@@ -109,8 +122,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 
-  //modal
-  multiAccountsModal: {
+  //Modal
+  modal: {
     justifyContent: 'flex-end',
     margin: 0,
   },
