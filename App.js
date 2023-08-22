@@ -5,6 +5,11 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/Octicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {Provider} from 'react-redux';
+import {store} from './store/store';
+// import {PersistGate} from 'redux-persist/integration/react';
+import persistStore from 'redux-persist/es/persistStore';
+
 import HomeScreen from './screens/HomeScreen';
 import SearchScreen from './screens/SearchScreen';
 import AddPostScreen from './screens/AddPostScreen';
@@ -19,6 +24,7 @@ const search = 'SearchScreen';
 const reel = 'ReelScreen';
 const profile = 'ProfileScreen';
 
+// const persistor = persistStore(store);
 function App() {
   const Stack = createNativeStackNavigator();
   const BottomTab = createBottomTabNavigator();
@@ -130,21 +136,25 @@ function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={({route}) => ({
-          headerStyle: {
-            backgroundColor: 'black',
-            borderTopColor: 'transparent',
-          },
-        })}>
-        <Stack.Screen
-          name="BottomTabScreens"
-          component={BottomTabScreens}
-          options={{headerShown: false}}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      {/* <PersistGate loading={null} persistor={persistor}> */}
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={({route}) => ({
+            headerStyle: {
+              backgroundColor: 'black',
+              borderTopColor: 'transparent',
+            },
+          })}>
+          <Stack.Screen
+            name="BottomTabScreens"
+            component={BottomTabScreens}
+            options={{headerShown: false}}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+      {/* </PersistGate> */}
+    </Provider>
   );
 }
 
