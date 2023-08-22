@@ -3,6 +3,7 @@ import {
   Image,
   StyleSheet,
   Text,
+  ToastAndroid,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -23,6 +24,17 @@ const Posts = () => {
   const renderPosts = ({item}) => {
     const postUserIndex = user.findIndex(user => user.userId === item.userId);
     const postUser = user[postUserIndex];
+    function likePressHandler() {
+      dispatch(postSlice.actions.setLike(item.post.postId));
+    }
+    function bookMarkPressHandler() {
+      dispatch(postSlice.actions.setBookMark(item.post.postId));
+      {
+        !item.post.isBookmarked
+          ? ToastAndroid.show('Saved to Collections!!', ToastAndroid.SHORT)
+          : null;
+      }
+    }
     return (
       <View style={styles.PostRootCotainer}>
         <View style={styles.postHeaderContainer}>
@@ -48,18 +60,17 @@ const Posts = () => {
           />
         </View>
         <View>
-          <Image
-            source={require('../assets/images/Mountain.jpeg')}
-            style={styles.postImage}
-          />
+          <Image source={item.post.postImage} style={styles.postImage} />
         </View>
         <View style={styles.postBottomContainer}>
           <View style={styles.postBottomInnerLeftContainer}>
-            <MaterialCommunityIcons
-              name="cards-heart-outline"
-              size={30}
-              color={'black'}
-            />
+            <TouchableOpacity onPress={likePressHandler}>
+              <MaterialCommunityIcons
+                name={item.post.isLiked ? 'cards-heart' : 'cards-heart-outline'}
+                size={30}
+                color={item.post.isLiked ? '#f01717' : 'black'}
+              />
+            </TouchableOpacity>
             <FeatherIcon
               style={{transform: [{rotateY: '180deg'}]}}
               name="message-circle"
@@ -68,12 +79,14 @@ const Posts = () => {
             />
             <FeatherIcon name="send" size={30} color={'black'} />
           </View>
-          <MaterialCommunityIcons
-            style={{marginRight: 10}}
-            name="bookmark-outline"
-            size={30}
-            color={'black'}
-          />
+          <TouchableOpacity onPress={bookMarkPressHandler}>
+            <MaterialCommunityIcons
+              style={{marginRight: 10}}
+              name={item.post.isBookmarked ? 'bookmark' : 'bookmark-outline'}
+              size={30}
+              color={'black'}
+            />
+          </TouchableOpacity>
         </View>
         <Text style={[styles.textBold, {marginLeft: 10}]}>
           {`${item.post.likes} likes`}

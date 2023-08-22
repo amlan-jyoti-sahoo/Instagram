@@ -10,10 +10,24 @@ export const postSlice = createSlice({
   name: 'post',
   initialState,
   reducers: {
-    // setLike: (state, action) => {
-    //   state.selectedPost = state.postData.find(
-    //     item => item.userId === action.payload,
-    //   );
-    // },
+    setLike: (state, action) => {
+      const selectedPostIndex = state.postData.findIndex(
+        item => item.post.postId === action.payload,
+      );
+      const selectedPost = state.postData[selectedPostIndex];
+      selectedPost.post.isLiked = !selectedPost.post.isLiked;
+      {
+        selectedPost.post.isLiked
+          ? selectedPost.post.likes++
+          : selectedPost.post.likes--;
+      }
+    },
+    setBookMark: (state, action) => {
+      const selectedPostIndex = state.postData.findIndex(
+        item => item.post.postId === action.payload,
+      );
+      const selectedPost = state.postData[selectedPostIndex];
+      selectedPost.post.isBookmarked = !selectedPost.post.isBookmarked;
+    },
   },
 });
