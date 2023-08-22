@@ -1,12 +1,8 @@
 import {Image, StyleSheet, View} from 'react-native';
 import React from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {UserData} from '../data/userData';
-import {useDispatch, useSelector} from 'react-redux';
-import {userSlice} from '.././store/userSlice';
 import ProfileStatus from '../components/ProfileStatus';
 import Posts from '../components/Posts';
 

@@ -3,7 +3,7 @@ import React from 'react';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import OtherAccount from './UI/OtherAccount';
+import OtherAccount from '../UI/OtherAccount';
 
 const MultiAccount = () => {
   return (
@@ -12,13 +12,13 @@ const MultiAccount = () => {
         <View style={styles.knob}></View>
       </View>
       <OtherAccount
-        image={require('../assets/images/Amlan.png')}
+        image={require('../../assets/images/Amlan.png')}
         name="amlan_jyoti_aj"
         color={'#0a98fe'}
         icon="radio-button-checked"
       />
       <OtherAccount
-        image={require('../assets/images/echho.png')}
+        image={require('../../assets/images/echho.png')}
         name="echho__"
         color={'black'}
         icon="radio-button-unchecked"
