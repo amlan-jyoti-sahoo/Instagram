@@ -1,10 +1,10 @@
 export const UserData = [
-  //   {
-  //     userId: 1,
-  //     userName: 'Amlanjyoti Sahoo',
-  //     profileImage: require('../assets/images/Amlan.png'),
-  //     hasStatus: false,
-  //   },
+  {
+    userId: 1,
+    userName: 'Amlanjyoti Sahoo',
+    profileImage: require('../assets/images/Amlan.png'),
+    hasStatus: false,
+  },
   {
     userId: 2,
     userName: 'Shubham Kadam',

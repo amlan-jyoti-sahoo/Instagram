@@ -41,10 +41,10 @@ const ProfileStatus = () => {
   };
   return (
     <View style={styles.profileStatusCotainer}>
-      <View style={styles.yourStoryContainer}>
-        {/* <View style={{position: 'absolute', right: 20, bottom: 25}}>
+      {/* <View style={styles.yourStoryContainer}>
+        <View style={{position: 'absolute', right: 20, bottom: 25}}>
         <Icon name="add-circle-sharp" size={24} color={'#0095ff'} />
-      </View> */}
+      </View>
         <Image
           source={require('../assets/images/Amlan.png')}
           style={{height: 80, width: 80, borderRadius: 50}}
@@ -52,7 +52,7 @@ const ProfileStatus = () => {
         <Text style={[styles.textNormal, {width: 80, textAlign: 'center'}]}>
           Your Story
         </Text>
-      </View>
+      </View> */}
       <View style={styles.statusContainer}>
         <FlatList
           data={user}
@@ -100,9 +100,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   nonStatusImageContainer: {
-    borderWidth: 3,
-    height: 90,
-    width: 90,
+    borderWidth: 1,
+    height: 87,
+    width: 87,
     borderRadius: 50,
     borderColor: '#afaeae',
     justifyContent: 'center',
@@ -110,8 +110,8 @@ const styles = StyleSheet.create({
   },
   statusImageContainer: {
     borderWidth: 3,
-    height: 90,
-    width: 90,
+    height: 87,
+    width: 87,
     borderColor: '#b42727',
     borderRadius: 50,
     justifyContent: 'center',
