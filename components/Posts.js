@@ -15,6 +15,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import {useDispatch, useSelector} from 'react-redux';
 import {postSlice} from '../store/postSlice';
+import {userSlice} from '../store/userSlice';
 
 const Posts = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,9 @@ const Posts = () => {
   const user = useSelector(state => state.user.userData);
 
   const renderPosts = ({item}) => {
+    function ProfilePressHandler() {
+      dispatch(userSlice.actions.showStory(item.userId));
+    }
     const postUserIndex = user.findIndex(user => user.userId === item.userId);
     const postUser = user[postUserIndex];
     function likePressHandler() {
@@ -39,17 +43,19 @@ const Posts = () => {
       <View style={styles.PostRootCotainer}>
         <View style={styles.postHeaderContainer}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <View
-              style={
-                item.hasStatus
-                  ? styles.postHeaderImageContainer
-                  : styles.postHeaderImageNonStatusContainer
-              }>
-              <Image
-                source={postUser.profileImage}
-                style={styles.postHeaderImage}
-              />
-            </View>
+            <TouchableOpacity onPress={ProfilePressHandler}>
+              <View
+                style={
+                  postUser.hasStatus
+                    ? styles.postHeaderImageContainer
+                    : styles.postHeaderImageNonStatusContainer
+                }>
+                <Image
+                  source={postUser.profileImage}
+                  style={styles.postHeaderImage}
+                />
+              </View>
+            </TouchableOpacity>
             <Text style={styles.textBold}>{postUser.userName}</Text>
           </View>
           <Icon
@@ -128,9 +134,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   postHeaderImageContainer: {
-    borderWidth: 2,
-    height: 45,
-    width: 45,
+    borderWidth: 1,
+    height: 40,
+    width: 40,
     borderColor: '#b42727',
     borderRadius: 50,
     justifyContent: 'center',
@@ -138,12 +144,14 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   postHeaderImageNonStatusContainer: {
-    height: 45,
-    width: 45,
+    borderWidth: 1,
+    height: 40,
+    width: 40,
+    borderColor: '#b1abab',
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 10,
+    marginLeft: 10,
   },
   postHeaderImage: {
     height: 35,
