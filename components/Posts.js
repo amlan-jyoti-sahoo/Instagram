@@ -10,11 +10,19 @@ import React from 'react';
 import {UserData} from '../data/userData';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import {useDispatch, useSelector} from 'react-redux';
+import {postSlice} from '../store/postSlice';
+
 const Posts = () => {
+  const dispatch = useDispatch();
+  const post = useSelector(state => state.post.postData);
+  const user = useSelector(state => state.user.userData);
+
   const renderPosts = ({item}) => {
+    const postUserIndex = user.findIndex(user => user.userId === item.userId);
+    const postUser = user[postUserIndex];
     return (
       <View style={styles.PostRootCotainer}>
         <View style={styles.postHeaderContainer}>
@@ -26,11 +34,11 @@ const Posts = () => {
                   : styles.postHeaderImageNonStatusContainer
               }>
               <Image
-                source={require('../assets/images/Shubham.png')}
+                source={postUser.profileImage}
                 style={styles.postHeaderImage}
               />
             </View>
-            <Text style={styles.textBold}>Shubham Kadam</Text>
+            <Text style={styles.textBold}>{postUser.userName}</Text>
           </View>
           <Icon
             style={{marginRight: 10}}
@@ -67,7 +75,9 @@ const Posts = () => {
             color={'black'}
           />
         </View>
-        <Text style={[styles.textBold, {marginLeft: 10}]}>279 likes</Text>
+        <Text style={[styles.textBold, {marginLeft: 10}]}>
+          {`${item.post.likes} likes`}
+        </Text>
       </View>
     );
   };
@@ -77,7 +87,7 @@ const Posts = () => {
         flex: 1,
         marginTop: 10,
       }}>
-      <FlatList data={UserData} renderItem={renderPosts} />
+      <FlatList data={post} renderItem={renderPosts} />
     </View>
   );
 };

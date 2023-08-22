@@ -1,6 +1,6 @@
-export const postData = [
+export const PostData = [
   {
-    senderId: 2,
+    userId: 2,
     post: {
       postImage: require('../assets/images/Mountain.jpeg'),
       likes: 100,
@@ -13,7 +13,7 @@ export const postData = [
     },
   },
   {
-    senderId: 3,
+    userId: 3,
     post: {
       postImage: require('../assets/images/Mountain.jpeg'),
       likes: 100,
@@ -26,7 +26,7 @@ export const postData = [
     },
   },
   {
-    senderId: 5,
+    userId: 5,
     post: {
       postImage: require('../assets/images/Mountain.jpeg'),
       likes: 100,
@@ -39,7 +39,7 @@ export const postData = [
     },
   },
   {
-    senderId: 4,
+    userId: 4,
     post: {
       postImage: require('../assets/images/Mountain.jpeg'),
       likes: 100,
