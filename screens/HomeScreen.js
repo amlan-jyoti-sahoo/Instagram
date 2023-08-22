@@ -16,10 +16,12 @@ import {UserData} from '../data/userData';
 const HomeScreen = () => {
   const renderprofileStatus = ({item}) => {
     return (
-      <View style={{height: 100, width: 100}}>
+      <View style={[styles.statusContainer]}>
         <View
           style={
-            item.hasStatus ? styles.statusImageContainer : styles.imageCotainer
+            item.hasStatus
+              ? styles.statusImageContainer
+              : styles.nonStatusImageContainer
           }>
           <Image source={item.profileImage} style={styles.statusImage} />
         </View>
@@ -38,7 +40,12 @@ const HomeScreen = () => {
       <View style={styles.PostRootCotainer}>
         <View style={styles.postHeaderContainer}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <View style={styles.postHeaderImageContainer}>
+            <View
+              style={
+                item.hasStatus
+                  ? styles.postHeaderImageContainer
+                  : styles.postHeaderImageNonStatusContainer
+              }>
               <Image
                 source={require('../assets/images/Shubham.png')}
                 style={styles.postHeaderImage}
@@ -121,23 +128,18 @@ const HomeScreen = () => {
 
       {/* ProfileStatus Container */}
       <View style={styles.profileStatusCotainer}>
-        {/* <View
-          style={{
-            height: '100%',
-            width: '25%',
-            marginRight: 10,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <View style={{position: 'absolute', right: 20, bottom: 25}}>
+        <View style={styles.yourStoryContainer}>
+          {/* <View style={{position: 'absolute', right: 20, bottom: 25}}>
             <Icon name="add-circle-sharp" size={24} color={'#0095ff'} />
-          </View>
+          </View> */}
           <Image
             source={require('../assets/images/Amlan.png')}
             style={{height: 80, width: 80, borderRadius: 50}}
           />
-          <Text>Your Story</Text>
-        </View> */}
+          <Text style={[styles.textNormal, {width: 80, textAlign: 'center'}]}>
+            Your Story
+          </Text>
+        </View>
         <View style={styles.statusContainer}>
           <FlatList
             data={UserData}
@@ -196,10 +198,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  imageCotainer: {
+  yourStoryContainer: {
+    height: 100,
+    width: '25%',
+    marginRight: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  statusContainer: {
+    height: 110,
+    marginRight: 10,
+    alignItems: 'center',
+  },
+  nonStatusImageContainer: {
+    borderWidth: 3,
     height: 90,
     width: 90,
     borderRadius: 50,
+    borderColor: '#afaeae',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -209,12 +225,6 @@ const styles = StyleSheet.create({
     width: 90,
     borderColor: '#b42727',
     borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  statusContainer: {
-    height: '100%',
-    marginRight: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -239,11 +249,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 10,
   },
+  postHeaderImageNonStatusContainer: {
+    height: 45,
+    width: 45,
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 10,
+  },
   postHeaderImage: {
     height: 35,
     width: 35,
     borderRadius: 50,
   },
+
   postImage: {width: '100%', height: 400},
   postBottomContainer: {
     height: 50,
