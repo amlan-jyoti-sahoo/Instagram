@@ -101,6 +101,7 @@ function App() {
           name="ProfileScreen"
           component={ProfileScreen}
           options={{
+            headerShown: false,
             headerTitle: 'Profile',
             tabBarIcon: ({focused}) => (
               <View
