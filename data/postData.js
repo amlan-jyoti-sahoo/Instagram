@@ -1,6 +1,6 @@
 export const PostData = [
   {
-    userId: 1,
+    userId: 2,
     post: {
       postId: 1,
       postImage: require('../assets/images/Mountain.jpeg'),
@@ -17,7 +17,7 @@ export const PostData = [
     },
   },
   {
-    userId: 3,
+    userId: 1,
     post: {
       postId: 1,
       postImage: require('../assets/images/delhi.jpg'),
@@ -34,7 +34,7 @@ export const PostData = [
     },
   },
   {
-    userId: 2,
+    userId: 3,
     post: {
       postId: 1,
       postImage: require('../assets/images/goa1.jpeg'),

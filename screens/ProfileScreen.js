@@ -26,6 +26,9 @@ const ProfileScreen = () => {
   const user = useSelector(state => state.user.userData);
   const post = useSelector(state => state.post.postData);
   const [showHighlights, setShowHighlights] = useState(true);
+
+  const filteredPost = post.filter(item => item.userId === 1);
+
   const showStoryHighlightsHandler = () => {
     setShowHighlights(!showHighlights);
   };
@@ -64,7 +67,9 @@ const ProfileScreen = () => {
             />
           </View>
           <View style={styles.ProfileTextData}>
-            <Text style={[styles.textBold, {fontSize: 18}]}>24</Text>
+            <Text style={[styles.textBold, {fontSize: 18}]}>
+              {filteredPost.length}
+            </Text>
             <Text style={styles.textNormal}>Posts</Text>
           </View>
           <View style={styles.ProfileTextData}>
@@ -133,18 +138,18 @@ const ProfileScreen = () => {
       <View style={styles.postRootContainer}>
         <View style={styles.postHeaderContainer}>
           <MaterialIcons name="grid-on" size={28} color={'black'} />
-          <MaterialIcons name="video-collection" size={28} color={'black'} />
+          <MaterialIcons name="video-collection" size={28} color={'#535353'} />
           <MaterialCommunityIcons
             name="contacts-outline"
             size={28}
-            color={'black'}
+            color={'#535353'}
           />
         </View>
         <View style={styles.allPostContainer}>
           <FlatList
             numColumns={3}
             scrollEnabled={true}
-            data={post}
+            data={filteredPost}
             renderItem={renderPosts}
           />
         </View>
