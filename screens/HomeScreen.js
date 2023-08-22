@@ -21,15 +21,12 @@ const HomeScreen = () => {
           style={
             item.hasStatus ? styles.statusImageContainer : styles.imageCotainer
           }>
-          <Image
-            source={item.profileImage}
-            style={{height: 75, width: 75, borderRadius: 50}}
-          />
+          <Image source={item.profileImage} style={styles.statusImage} />
         </View>
         <Text
           ellipsizeMode="tail"
           numberOfLines={1}
-          style={{width: 80, color: 'black', textAlign: 'center'}}>
+          style={[styles.textNormal, {width: 80, textAlign: 'center'}]}>
           {item.userName}
         </Text>
       </View>
@@ -39,33 +36,12 @@ const HomeScreen = () => {
   const renderPosts = ({item}) => {
     return (
       <View style={styles.PostRootCotainer}>
-        <View
-          style={{
-            height: 50,
-            width: '100%',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
+        <View style={styles.postHeaderContainer}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <View
-              style={{
-                borderWidth: 2,
-                height: 45,
-                width: 45,
-                borderColor: '#b42727',
-                borderRadius: 50,
-                justifyContent: 'center',
-                alignItems: 'center',
-                marginHorizontal: 10,
-              }}>
+            <View style={styles.postHeaderImageContainer}>
               <Image
                 source={require('../assets/images/Shubham.png')}
-                style={{
-                  height: 35,
-                  width: 35,
-                  borderRadius: 50,
-                }}
+                style={styles.postHeaderImage}
               />
             </View>
             <Text style={styles.textBold}>Shubham Kadam</Text>
@@ -80,24 +56,11 @@ const HomeScreen = () => {
         <View>
           <Image
             source={require('../assets/images/Mountain.jpeg')}
-            style={{width: '100%', height: 400}}
+            style={styles.postImage}
           />
         </View>
-        <View
-          style={{
-            height: 50,
-            width: '100%',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginLeft: 10,
-              width: 130,
-            }}>
+        <View style={styles.postBottomContainer}>
+          <View style={styles.postBottomInnerLeftContainer}>
             <MaterialCommunityIcons
               name="cards-heart-outline"
               size={30}
@@ -122,6 +85,7 @@ const HomeScreen = () => {
       </View>
     );
   };
+
   return (
     <View style={styles.rootContainer}>
       {/* Upper Header Container */}
@@ -174,13 +138,7 @@ const HomeScreen = () => {
           />
           <Text>Your Story</Text>
         </View> */}
-        <View
-          style={{
-            height: '100%',
-            marginRight: 10,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+        <View style={styles.statusContainer}>
           <FlatList
             data={UserData}
             renderItem={renderprofileStatus}
@@ -211,11 +169,12 @@ const styles = StyleSheet.create({
   },
   textBold: {
     color: 'black',
-    fontWeight: '500',
+    fontWeight: '600',
   },
   textNormal: {
+    fontSize: 12,
     color: 'black',
-    fontWeight: '200',
+    fontWeight: '400',
   },
   upperHeaderContainer: {
     height: 50,
@@ -229,19 +188,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  imageCotainer: {
-    height: 90,
-    width: 90,
-    borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   profileStatusCotainer: {
     height: 110,
     width: '100%',
     marginTop: 15,
     marginLeft: 10,
     flexDirection: 'row',
+    alignItems: 'center',
+  },
+  imageCotainer: {
+    height: 90,
+    width: 90,
+    borderRadius: 50,
+    justifyContent: 'center',
     alignItems: 'center',
   },
   statusImageContainer: {
@@ -253,7 +212,50 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  statusContainer: {
+    height: '100%',
+    marginRight: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  statusImage: {height: 75, width: 75, borderRadius: 50},
   PostRootCotainer: {
     marginBottom: 10,
+  },
+  postHeaderContainer: {
+    height: 50,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  postHeaderImageContainer: {
+    borderWidth: 2,
+    height: 45,
+    width: 45,
+    borderColor: '#b42727',
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 10,
+  },
+  postHeaderImage: {
+    height: 35,
+    width: 35,
+    borderRadius: 50,
+  },
+  postImage: {width: '100%', height: 400},
+  postBottomContainer: {
+    height: 50,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  postBottomInnerLeftContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginLeft: 10,
+    width: 130,
   },
 });
