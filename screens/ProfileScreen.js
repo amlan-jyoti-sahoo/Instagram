@@ -15,17 +15,21 @@ import Feather from 'react-native-vector-icons/Feather';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {UserData} from '../data/userData';
-import {useDispatch, useSelector} from 'react-redux';
-import {userSlice} from '.././store/userSlice';
-import {shouldUseActivityState} from 'react-native-screens';
 import StoryHighlights from '../components/UI/StoryHighlights';
-import {PostData} from '../data/postData';
+
+import Modal from 'react-native-modal';
+import {useSelector} from 'react-redux';
+import MultiAccount from '../components/MultiAccount';
 
 const ProfileScreen = () => {
   const user = useSelector(state => state.user.userData);
   const post = useSelector(state => state.post.postData);
   const [showHighlights, setShowHighlights] = useState(true);
+  const [multiAccountsModal, setMultiAccountsModal] = useState(false);
+
+  const toggleMultiAccountsModal = () => {
+    setMultiAccountsModal(!multiAccountsModal);
+  };
 
   const filteredPost = post.filter(item => item.userId === 1);
 
@@ -47,8 +51,9 @@ const ProfileScreen = () => {
       <View style={styles.upperHeaderContainer}>
         <View style={styles.upperHeaderInnerLeftContainer}>
           <Text style={[styles.textBold, {fontSize: 20}]}>amlan_jyoti_aj</Text>
-
-          <Octicons name="chevron-down" size={20} color="black" />
+          <TouchableOpacity onPress={toggleMultiAccountsModal}>
+            <Octicons name="chevron-down" size={20} color="black" />
+          </TouchableOpacity>
           <Octicons name="dot-fill" size={17} color={'red'} />
         </View>
         <View style={styles.upperHeaderInnerRightContainer}>
@@ -56,6 +61,15 @@ const ProfileScreen = () => {
           <Feather name="menu" size={32} color="black" />
         </View>
       </View>
+      <Modal
+        testID={'modal'}
+        isVisible={multiAccountsModal}
+        onSwipeComplete={() => {}}
+        swipeDirection={['up', 'left', 'right', 'down']}
+        onBackdropPress={toggleMultiAccountsModal}
+        style={styles.multiAccountsModal}>
+        <MultiAccount />
+      </Modal>
 
       {/* Profile */}
       <View style={styles.profileDataContainer}>
@@ -85,6 +99,7 @@ const ProfileScreen = () => {
           <Text style={styles.textBold}>Amlanjyoti Sahoo</Text>
           <Text style={styles.textNormal}>Android Developer🧑🏻‍💻</Text>
           <Text style={styles.textNormal}>Game Dev🎮🕹️</Text>
+          <Text style={styles.textNormal}>Space🔭👽</Text>
         </View>
         <View style={styles.profileBottomDataContainer}>
           <View style={styles.ProfileBottomInnerContainer}>
@@ -276,5 +291,11 @@ const styles = StyleSheet.create({
   yourPostImage: {
     height: 135,
     width: 135,
+  },
+
+  //modal
+  multiAccountsModal: {
+    justifyContent: 'flex-end',
+    margin: 0,
   },
 });
