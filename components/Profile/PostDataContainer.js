@@ -16,61 +16,61 @@ const PostDataContainer = ({filteredPost}) => {
   const [tabNo, setTabNo] = useState(1);
   function PostReelRenderHandler(tabNo) {
     setTabNo(tabNo);
-    console.log(tabNo);
   }
 
   return (
     <View style={styles.postRootContainer}>
       <View style={styles.postHeaderContainer}>
-        <View
-          style={
-            tabNo === 1
-              ? styles.postHeaderInnerContainerActive
-              : styles.postHeaderInnerContainerInActive
-          }>
-          <TouchableOpacity
-            onPress={() => {
-              PostReelRenderHandler(1);
-            }}>
-            <View style={{height: '100%', width: '100%'}}>
-              <MaterialIcons name="grid-on" size={28} color={'black'} />
-            </View>
-          </TouchableOpacity>
-        </View>
-        <View
-          style={
-            tabNo === 2
-              ? styles.postHeaderInnerContainerActive
-              : styles.postHeaderInnerContainerInActive
-          }>
-          <TouchableOpacity
-            onPress={() => {
-              PostReelRenderHandler(2);
-            }}>
+        <TouchableOpacity
+          style={styles.touchContainer}
+          onPress={() => {
+            PostReelRenderHandler(1);
+          }}>
+          <View
+            style={
+              tabNo === 1
+                ? styles.postHeaderInnerContainerActive
+                : styles.postHeaderInnerContainerInActive
+            }>
+            <MaterialIcons name="grid-on" size={28} color={'black'} />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.touchContainer}
+          onPress={() => {
+            PostReelRenderHandler(2);
+          }}>
+          <View
+            style={
+              tabNo === 2
+                ? styles.postHeaderInnerContainerActive
+                : styles.postHeaderInnerContainerInActive
+            }>
             <MaterialIcons
               name="video-collection"
               size={28}
               color={'#535353'}
             />
-          </TouchableOpacity>
-        </View>
-        <View
-          style={
-            tabNo === 3
-              ? styles.postHeaderInnerContainerActive
-              : styles.postHeaderInnerContainerInActive
-          }>
-          <TouchableOpacity
-            onPress={() => {
-              PostReelRenderHandler(3);
-            }}>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.touchContainer}
+          onPress={() => {
+            PostReelRenderHandler(3);
+          }}>
+          <View
+            style={
+              tabNo === 3
+                ? styles.postHeaderInnerContainerActive
+                : styles.postHeaderInnerContainerInActive
+            }>
             <MaterialCommunityIcons
               name="contacts-outline"
               size={28}
               color={'#535353'}
             />
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
       </View>
 
       {/* Post Render Component */}
@@ -95,7 +95,9 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
 
-  postRootContainer: {},
+  postRootContainer: {
+    width: '100%',
+  },
   postHeaderContainer: {
     paddingTop: 10,
     height: 50,
@@ -106,7 +108,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   postHeaderInnerContainerActive: {
-    width: '33%',
+    width: '100%',
     height: '100%',
     borderBottomWidth: 2,
     borderColor: 'black',
@@ -114,10 +116,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   postHeaderInnerContainerInActive: {
-    width: '33%',
+    width: '100%',
     height: '100%',
     // borderBottomWidth: 2,
     // borderColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  touchContainer: {
+    width: '33%',
     justifyContent: 'center',
     alignItems: 'center',
   },
