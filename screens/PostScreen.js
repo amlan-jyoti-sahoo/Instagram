@@ -4,9 +4,10 @@ import Posts from '../components/Home/Posts';
 import {useSelector} from 'react-redux';
 
 const PostScreen = ({route}) => {
-  const post = useSelector(state => state.post.postData);
-  const filteredPost = post.filter(item => item.userId === 1);
-  const {postId} = route.params;
+  // const post = useSelector(state => state.post.postData);
+  // const filteredPost = post.filter(item => item.userId === 1);
+  const {filteredPost, postId} = route.params;
+  console.log(filteredPost);
   console.log(postId);
   return (
     <View style={styles.rootContainer}>

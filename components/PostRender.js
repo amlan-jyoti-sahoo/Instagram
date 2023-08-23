@@ -13,7 +13,10 @@ const PostRender = ({filteredPost}) => {
   const renderPosts = ({item}) => {
     function postPressHandler(postId) {
       console.log('hello');
-      navigation.navigate('PostScreen', {postId});
+      navigation.navigate('PostScreen', {
+        postId: postId,
+        filteredPost: filteredPost,
+      });
     }
     return (
       <View style={styles.yourPostImageContainer}>
