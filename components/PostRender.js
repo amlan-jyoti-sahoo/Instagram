@@ -1,10 +1,25 @@
-import {FlatList, StyleSheet, View, Image} from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  View,
+  Image,
+  TouchableOpacity,
+  Button,
+} from 'react-native';
 import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 const PostRender = ({filteredPost}) => {
+  const navigation = useNavigation();
   const renderPosts = ({item}) => {
+    function postPressHandler(postId) {
+      console.log('hello');
+      navigation.navigate('PostScreen', {postId});
+    }
     return (
       <View style={styles.yourPostImageContainer}>
-        <Image source={item.post.postImage} style={styles.yourPostImage} />
+        <TouchableOpacity onPress={() => postPressHandler(item.post.postId)}>
+          <Image source={item.post.postImage} style={styles.yourPostImage} />
+        </TouchableOpacity>
       </View>
     );
   };

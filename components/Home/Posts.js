@@ -18,9 +18,9 @@ import {postSlice} from '../../store/postSlice';
 import {userSlice} from '../../store/userSlice';
 import PostEllipsisMenu from './PostEllipsisMenu';
 
-const Posts = () => {
+const Posts = ({data, postId}) => {
   const dispatch = useDispatch();
-  const post = useSelector(state => state.post.postData);
+
   const user = useSelector(state => state.user.userData);
   const selectedPost = useSelector(state => state.post.selectedPost);
 
@@ -113,7 +113,7 @@ const Posts = () => {
   return (
     <>
       <View style={styles.rootContainer}>
-        <FlatList data={post} renderItem={renderPosts} />
+        <FlatList data={data} renderItem={renderPosts} />
       </View>
 
       {/* MenuModal */}

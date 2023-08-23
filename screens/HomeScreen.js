@@ -6,8 +6,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import ProfileStatus from '../components/Home/ProfileStatus';
 import Posts from '../components/Home/Posts';
+import {useSelector} from 'react-redux';
 
 const HomeScreen = ({navigation}) => {
+  const post = useSelector(state => state.post.postData);
   return (
     <SafeAreaView style={styles.rootContainer}>
       {/* Upper Header Container */}
@@ -45,7 +47,7 @@ const HomeScreen = ({navigation}) => {
       <ProfileStatus />
 
       {/*All Post Container */}
-      <Posts />
+      <Posts data={post} />
     </SafeAreaView>
   );
 };

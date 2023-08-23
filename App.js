@@ -16,6 +16,7 @@ import AddPostScreen from './screens/AddPostScreen';
 import ReelScreen from './screens/ReelScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import SavedPostScreen from './screens/SavedPostScreen';
+import PostScreen from './screens/PostScreen';
 
 //Screens
 
@@ -156,6 +157,11 @@ function App() {
               name="SavedPostScreen"
               component={SavedPostScreen}
               options={{headerTitle: 'All Saved Posts'}}
+            />
+            <Stack.Screen
+              name="PostScreen"
+              component={PostScreen}
+              options={{headerTitle: 'Posts'}}
             />
           </Stack.Navigator>
         </NavigationContainer>

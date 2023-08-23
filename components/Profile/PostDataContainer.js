@@ -18,6 +18,7 @@ const PostDataContainer = ({filteredPost}) => {
     setTabNo(tabNo);
     console.log(tabNo);
   }
+
   return (
     <View style={styles.postRootContainer}>
       <View style={styles.postHeaderContainer}>
