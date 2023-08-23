@@ -1,4 +1,4 @@
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, SafeAreaView, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import Octicons from 'react-native-vector-icons/Octicons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -10,7 +10,7 @@ import PostEllipsisMenu from '../components/Home/PostEllipsisMenu';
 
 const HomeScreen = ({navigation}) => {
   return (
-    <View style={styles.rootContainer}>
+    <SafeAreaView style={styles.rootContainer}>
       {/* Upper Header Container */}
       <View style={styles.upperHeaderContainer}>
         <Image
@@ -47,7 +47,7 @@ const HomeScreen = ({navigation}) => {
 
       {/*All Post Container */}
       <Posts />
-    </View>
+    </SafeAreaView>
   );
 };
 

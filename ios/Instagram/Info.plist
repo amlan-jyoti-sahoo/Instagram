@@ -50,10 +50,9 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<key>UIAppFonts</key>
-
 	<false/>
-	<array>
+    <key>UIAppFonts</key>
+<array>
   <string>AntDesign.ttf</string>
   <string>Entypo.ttf</string>
   <string>EvilIcons.ttf</string>

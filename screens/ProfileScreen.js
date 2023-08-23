@@ -1,4 +1,10 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, {useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Octicons from 'react-native-vector-icons/Octicons';
@@ -29,7 +35,7 @@ const ProfileScreen = () => {
   const filteredPost = post.filter(item => item.userId === 1);
 
   return (
-    <View style={styles.rootContainer}>
+    <SafeAreaView style={styles.rootContainer}>
       {/* Upper Header Container */}
       <View style={styles.upperHeaderContainer}>
         <View style={styles.upperHeaderInnerLeftContainer}>
@@ -78,7 +84,7 @@ const ProfileScreen = () => {
         style={styles.modal}>
         <Menu />
       </Modal>
-    </View>
+    </SafeAreaView>
   );
 };
 
