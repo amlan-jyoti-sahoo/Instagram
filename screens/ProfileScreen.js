@@ -62,7 +62,7 @@ const ProfileScreen = () => {
         testID={'modal'}
         isVisible={multiAccountsModal}
         onSwipeComplete={() => {}}
-        swipeDirection={['up', 'left', 'right', 'down']}
+        swipeDirection={['down']}
         onBackdropPress={toggleMultiAccountsModal}
         style={styles.modal}>
         <MultiAccount />
@@ -73,7 +73,7 @@ const ProfileScreen = () => {
         testID={'modal'}
         isVisible={menuModal}
         onSwipeComplete={() => {}}
-        swipeDirection={['up', 'left', 'right', 'down']}
+        swipeDirection={['down']}
         onBackdropPress={toggleMenuModal}
         style={styles.modal}>
         <Menu />

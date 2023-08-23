@@ -17,7 +17,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {postSlice} from '../store/postSlice';
 import {userSlice} from '../store/userSlice';
 
-const Posts = () => {
+const Posts = ({PostEllipsisOnpress}) => {
   const dispatch = useDispatch();
   const post = useSelector(state => state.post.postData);
   const user = useSelector(state => state.user.userData);
@@ -58,12 +58,14 @@ const Posts = () => {
             </TouchableOpacity>
             <Text style={styles.textBold}>{postUser.userName}</Text>
           </View>
-          <Icon
-            style={{marginRight: 10}}
-            name="ellipsis-vertical"
-            size={24}
-            color={'black'}
-          />
+          <TouchableOpacity onPress={PostEllipsisOnpress}>
+            <Icon
+              style={{marginRight: 10}}
+              name="ellipsis-vertical"
+              size={24}
+              color={'black'}
+            />
+          </TouchableOpacity>
         </View>
         <View>
           <Image source={item.post.postImage} style={styles.postImage} />
