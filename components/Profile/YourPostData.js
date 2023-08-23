@@ -58,13 +58,16 @@ const styles = StyleSheet.create({
   },
   allPostContainer: {
     marginTop: 20,
+    width: '100%',
   },
   yourPostImageContainer: {
     // borderWidth:1,
-    margin: 1,
+    margin: '0.33%',
+    height: 135,
+    width: '33%',
   },
   yourPostImage: {
     height: 135,
-    width: 135,
+    width: '100%',
   },
 });

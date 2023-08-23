@@ -3,21 +3,20 @@ import {
   Image,
   StyleSheet,
   Text,
-  ToastAndroid,
   TouchableOpacity,
   View,
 } from 'react-native';
 import React, {useState} from 'react';
-import {UserData} from '../data/userData';
+import {UserData} from '../../data/userData';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Modal from 'react-native-modal';
 import {useDispatch, useSelector} from 'react-redux';
-import {postSlice} from '../store/postSlice';
-import {userSlice} from '../store/userSlice';
-import PostEllipsisMenu from './Home/PostEllipsisMenu';
+import {postSlice} from '../../store/postSlice';
+import {userSlice} from '../../store/userSlice';
+import PostEllipsisMenu from './PostEllipsisMenu';
 
 const Posts = () => {
   const dispatch = useDispatch();
@@ -41,11 +40,6 @@ const Posts = () => {
     }
     function bookMarkPressHandler() {
       dispatch(postSlice.actions.setBookMark(item.post.postId));
-      {
-        !item.post.isBookmarked
-          ? ToastAndroid.show('Saved to Collections!!', ToastAndroid.SHORT)
-          : null;
-      }
     }
     return (
       <View style={styles.PostRootCotainer}>

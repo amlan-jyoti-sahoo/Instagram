@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {userSlice} from '.././store/userSlice';
+import {userSlice} from '../../store/userSlice';
 
 const ProfileStatus = () => {
   const dispatch = useDispatch();

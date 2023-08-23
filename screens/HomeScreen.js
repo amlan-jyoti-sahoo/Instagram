@@ -4,8 +4,8 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import ProfileStatus from '../components/ProfileStatus';
-import Posts from '../components/Posts';
+import ProfileStatus from '../components/Home/ProfileStatus';
+import Posts from '../components/Home/Posts';
 import PostEllipsisMenu from '../components/Home/PostEllipsisMenu';
 
 const HomeScreen = ({navigation}) => {
