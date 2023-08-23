@@ -7,20 +7,28 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {UserData} from '../data/userData';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import Modal from 'react-native-modal';
 import {useDispatch, useSelector} from 'react-redux';
 import {postSlice} from '../store/postSlice';
 import {userSlice} from '../store/userSlice';
+import PostEllipsisMenu from './Home/PostEllipsisMenu';
 
-const Posts = ({PostEllipsisOnpress}) => {
+const Posts = () => {
   const dispatch = useDispatch();
   const post = useSelector(state => state.post.postData);
   const user = useSelector(state => state.user.userData);
+
+  const [ellipsisMenuModal, setEllipsisMenuModal] = useState(false);
+
+  const toggleEllipsisMenuModal = () => {
+    setEllipsisMenuModal(!ellipsisMenuModal);
+  };
 
   const renderPosts = ({item}) => {
     function ProfilePressHandler() {
@@ -58,7 +66,7 @@ const Posts = ({PostEllipsisOnpress}) => {
             </TouchableOpacity>
             <Text style={styles.textBold}>{postUser.userName}</Text>
           </View>
-          <TouchableOpacity onPress={PostEllipsisOnpress}>
+          <TouchableOpacity onPress={toggleEllipsisMenuModal}>
             <Icon
               style={{marginRight: 10}}
               name="ellipsis-vertical"
@@ -103,13 +111,26 @@ const Posts = ({PostEllipsisOnpress}) => {
     );
   };
   return (
-    <View
-      style={{
-        flex: 1,
-        marginTop: 10,
-      }}>
-      <FlatList data={post} renderItem={renderPosts} />
-    </View>
+    <>
+      <View
+        style={{
+          flex: 1,
+          marginTop: 10,
+        }}>
+        <FlatList data={post} renderItem={renderPosts} />
+      </View>
+
+      {/* MenuModal */}
+      <Modal
+        testID={'modal'}
+        isVisible={ellipsisMenuModal}
+        onSwipeComplete={() => {}}
+        swipeDirection={['down']}
+        onBackdropPress={toggleEllipsisMenuModal}
+        style={styles.modal}>
+        <PostEllipsisMenu />
+      </Modal>
+    </>
   );
 };
 
@@ -175,5 +196,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginLeft: 10,
     width: 130,
+  },
+
+  //Modal
+  modal: {
+    justifyContent: 'flex-end',
+    margin: 0,
   },
 });

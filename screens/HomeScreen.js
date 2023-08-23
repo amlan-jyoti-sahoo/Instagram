@@ -3,18 +3,12 @@ import React, {useState} from 'react';
 import Octicons from 'react-native-vector-icons/Octicons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Modal from 'react-native-modal';
 
 import ProfileStatus from '../components/ProfileStatus';
 import Posts from '../components/Posts';
 import PostEllipsisMenu from '../components/Home/PostEllipsisMenu';
 
 const HomeScreen = ({navigation}) => {
-  const [ellipsisMenuModal, setEllipsisMenuModal] = useState(false);
-
-  const toggleEllipsisMenuModal = () => {
-    setEllipsisMenuModal(!ellipsisMenuModal);
-  };
   return (
     <View style={styles.rootContainer}>
       {/* Upper Header Container */}
@@ -52,18 +46,7 @@ const HomeScreen = ({navigation}) => {
       <ProfileStatus />
 
       {/*All Post Container */}
-      <Posts PostEllipsisOnpress={toggleEllipsisMenuModal} />
-
-      {/* MenuModal */}
-      <Modal
-        testID={'modal'}
-        isVisible={ellipsisMenuModal}
-        onSwipeComplete={() => {}}
-        swipeDirection={['down']}
-        onBackdropPress={toggleEllipsisMenuModal}
-        style={styles.modal}>
-        <PostEllipsisMenu />
-      </Modal>
+      <Posts />
     </View>
   );
 };
