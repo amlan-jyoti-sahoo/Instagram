@@ -31,7 +31,9 @@ const PostDataContainer = ({filteredPost}) => {
             onPress={() => {
               PostReelRenderHandler(1);
             }}>
-            <MaterialIcons name="grid-on" size={28} color={'black'} />
+            <View style={{height: '100%', width: '100%'}}>
+              <MaterialIcons name="grid-on" size={28} color={'black'} />
+            </View>
           </TouchableOpacity>
         </View>
         <View

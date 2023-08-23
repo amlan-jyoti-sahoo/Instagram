@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/Octicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Provider} from 'react-redux';
 import {store} from './store/store';
-// import {PersistGate} from 'redux-persist/integration/react';
+import {PersistGate} from 'redux-persist/integration/react';
 import persistStore from 'redux-persist/es/persistStore';
 
 import HomeScreen from './screens/HomeScreen';
@@ -25,7 +25,7 @@ const search = 'SearchScreen';
 const reel = 'ReelScreen';
 const profile = 'ProfileScreen';
 
-// const persistor = persistStore(store);
+const persistor = persistStore(store);
 function App() {
   const Stack = createNativeStackNavigator();
   const BottomTab = createBottomTabNavigator();
@@ -139,27 +139,27 @@ function App() {
 
   return (
     <Provider store={store}>
-      {/* <PersistGate loading={null} persistor={persistor}> */}
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={({route}) => ({
-            headerStyle: {
-              // borderTopColor: 'transparent',
-            },
-          })}>
-          <Stack.Screen
-            name="BottomTabScreens"
-            component={BottomTabScreens}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="SavedPostScreen"
-            component={SavedPostScreen}
-            options={{headerTitle: 'All Saved Posts'}}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-      {/* </PersistGate> */}
+      <PersistGate loading={null} persistor={persistor}>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={({route}) => ({
+              headerStyle: {
+                // borderTopColor: 'transparent',
+              },
+            })}>
+            <Stack.Screen
+              name="BottomTabScreens"
+              component={BottomTabScreens}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="SavedPostScreen"
+              component={SavedPostScreen}
+              options={{headerTitle: 'All Saved Posts'}}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PersistGate>
     </Provider>
   );
 }
