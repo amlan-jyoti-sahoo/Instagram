@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {UserData} from '../../data/userData';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -25,6 +25,15 @@ const Posts = ({data, postId}) => {
   const selectedPost = useSelector(state => state.post.selectedPost);
 
   const [ellipsisMenuModal, setEllipsisMenuModal] = useState(false);
+
+  const flatListRef = useRef(null);
+  useEffect(() => {
+    const index = data.findIndex(item => item.post.postId === postId);
+
+    if (index !== -1 && flatListRef.current) {
+      flatListRef.current.scrollToIndex({index});
+    }
+  }, [postId]);
 
   const toggleEllipsisMenuModal = () => {
     setEllipsisMenuModal(!ellipsisMenuModal);
@@ -113,7 +122,20 @@ const Posts = ({data, postId}) => {
   return (
     <>
       <View style={styles.rootContainer}>
-        <FlatList data={data} renderItem={renderPosts} />
+        <FlatList
+          ref={flatListRef}
+          onScrollToIndexFailed={info => {
+            const wait = new Promise(resolve => setTimeout(resolve, 500));
+            wait.then(() => {
+              flatListRef.current?.scrollToIndex({
+                index: info.index,
+                animated: true,
+              });
+            });
+          }}
+          data={data}
+          renderItem={renderPosts}
+        />
       </View>
 
       {/* MenuModal */}
