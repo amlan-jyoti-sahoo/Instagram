@@ -6,7 +6,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import ProfileStatus from '../components/Home/ProfileStatus';
 import Posts from '../components/Home/Posts';
-import PostEllipsisMenu from '../components/Home/PostEllipsisMenu';
 
 const HomeScreen = ({navigation}) => {
   return (
@@ -56,6 +55,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
+    backgroundColor: 'white',
   },
   textBold: {
     color: 'black',

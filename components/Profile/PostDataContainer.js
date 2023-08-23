@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const YourPostData = ({filteredPost}) => {
+const PostDataContainer = ({filteredPost}) => {
   const renderPosts = ({item}) => {
     return (
       <View style={styles.yourPostImageContainer}>
@@ -15,13 +15,19 @@ const YourPostData = ({filteredPost}) => {
   return (
     <View style={styles.postRootContainer}>
       <View style={styles.postHeaderContainer}>
-        <MaterialIcons name="grid-on" size={28} color={'black'} />
-        <MaterialIcons name="video-collection" size={28} color={'#535353'} />
-        <MaterialCommunityIcons
-          name="contacts-outline"
-          size={28}
-          color={'#535353'}
-        />
+        <View style={styles.postHeaderInnerContainerActive}>
+          <MaterialIcons name="grid-on" size={28} color={'black'} />
+        </View>
+        <View style={styles.postHeaderInnerContainerInActive}>
+          <MaterialIcons name="video-collection" size={28} color={'#535353'} />
+        </View>
+        <View style={styles.postHeaderInnerContainerInActive}>
+          <MaterialCommunityIcons
+            name="contacts-outline"
+            size={28}
+            color={'#535353'}
+          />
+        </View>
       </View>
       <View style={styles.allPostContainer}>
         <FlatList
@@ -35,7 +41,7 @@ const YourPostData = ({filteredPost}) => {
   );
 };
 
-export default YourPostData;
+export default PostDataContainer;
 
 const styles = StyleSheet.create({
   textBold: {
@@ -49,16 +55,36 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
 
-  postRootContainer: {
-    marginTop: 30,
-  },
+  postRootContainer: {},
   postHeaderContainer: {
+    paddingTop: 10,
+    height: 50,
+    width: '100%',
+    backgroundColor: 'white',
     flexDirection: 'row',
     justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  postHeaderInnerContainerActive: {
+    width: '33%',
+    height: '100%',
+    borderBottomWidth: 2,
+    borderColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  postHeaderInnerContainerInActive: {
+    width: '33%',
+    height: '100%',
+    // borderBottomWidth: 2,
+    // borderColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   allPostContainer: {
-    marginTop: 20,
     width: '100%',
+    height: '100%',
+    marginTop: 2,
   },
   yourPostImageContainer: {
     // borderWidth:1,

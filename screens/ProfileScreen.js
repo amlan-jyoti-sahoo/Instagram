@@ -15,7 +15,7 @@ import {useSelector} from 'react-redux';
 import MultiAccount from '../components/Profile/MultiAccount';
 import StoryHighlightContainer from '../components/Profile/StoryHighlightContainer';
 import ProfileData from '../components/Profile/ProfileData';
-import YourPostData from '../components/Profile/YourPostData';
+import PostDataContainer from '../components/Profile/PostDataContainer';
 import Menu from '../components/Profile/Menu';
 
 const ProfileScreen = ({navigation}) => {
@@ -66,7 +66,7 @@ const ProfileScreen = ({navigation}) => {
       <StoryHighlightContainer />
 
       {/* Post area */}
-      <YourPostData filteredPost={filteredPost} />
+      <PostDataContainer filteredPost={filteredPost} />
 
       {/* MultiAccountModal */}
       <Modal
@@ -98,6 +98,7 @@ export default ProfileScreen;
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
+    backgroundColor: 'white',
   },
   textBold: {
     fontSize: 14,

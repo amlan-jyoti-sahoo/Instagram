@@ -18,7 +18,7 @@ const Menu = ({savedMenuPressHandler}) => {
           <Text style={styles.textNormal}>Setting and Privacy</Text>
         </View>
         <View style={styles.itemContainer}>
-          <Ionicons name="bookmark-outline" size={24} color={'black'} />
+          <MaterialIcons name="tag" size={24} color={'black'} />
           <Text style={styles.textNormal}>Threads</Text>
         </View>
         <View style={styles.itemContainer}>
