@@ -10,16 +10,19 @@ export const postSlice = createSlice({
   name: 'post',
   initialState,
   reducers: {
+    setSelectedPost: (state, action) => {
+      state.selectedPost = state.postData.find(
+        item => item.post.postId === action.payload,
+      );
+    },
     setLike: (state, action) => {
       const selectedPostIndex = state.postData.findIndex(
         item => item.post.postId === action.payload,
       );
-      const selectedPost = state.postData[selectedPostIndex];
-      selectedPost.post.isLiked = !selectedPost.post.isLiked;
+      const post = state.postData[selectedPostIndex];
+      post.post.isLiked = !post.post.isLiked;
       {
-        selectedPost.post.isLiked
-          ? selectedPost.post.likes++
-          : selectedPost.post.likes--;
+        post.post.isLiked ? post.post.likes++ : post.post.likes--;
       }
     },
     setBookMark: (state, action) => {

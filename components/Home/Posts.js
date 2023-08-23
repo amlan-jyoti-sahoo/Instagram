@@ -22,6 +22,7 @@ const Posts = () => {
   const dispatch = useDispatch();
   const post = useSelector(state => state.post.postData);
   const user = useSelector(state => state.user.userData);
+  const selectedPost = useSelector(state => state.post.selectedPost);
 
   const [ellipsisMenuModal, setEllipsisMenuModal] = useState(false);
 
@@ -40,6 +41,11 @@ const Posts = () => {
     }
     function bookMarkPressHandler() {
       dispatch(postSlice.actions.setBookMark(item.post.postId));
+    }
+    function ellipsisMenuPressHandler() {
+      toggleEllipsisMenuModal();
+      dispatch(postSlice.actions.setSelectedPost(item.post.postId));
+      console.log(selectedPost);
     }
     return (
       <View style={styles.PostRootCotainer}>
@@ -60,7 +66,7 @@ const Posts = () => {
             </TouchableOpacity>
             <Text style={styles.textBold}>{postUser.userName}</Text>
           </View>
-          <TouchableOpacity onPress={toggleEllipsisMenuModal}>
+          <TouchableOpacity onPress={ellipsisMenuPressHandler}>
             <Icon
               style={{marginRight: 10}}
               name="ellipsis-vertical"
@@ -122,7 +128,7 @@ const Posts = () => {
         swipeDirection={['down']}
         onBackdropPress={toggleEllipsisMenuModal}
         style={styles.modal}>
-        <PostEllipsisMenu />
+        <PostEllipsisMenu selectedPost={selectedPost} />
       </Modal>
     </>
   );

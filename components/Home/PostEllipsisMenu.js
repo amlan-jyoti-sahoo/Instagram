@@ -1,12 +1,24 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import Octicons from 'react-native-vector-icons/Octicons';
 
-const PostEllipsisMenu = () => {
+import {useDispatch, useSelector} from 'react-redux';
+import {postSlice} from '../../store/postSlice';
+import {userSlice} from '../../store/userSlice';
+
+const PostEllipsisMenu = ({selectedPost}) => {
+  const dispatch = useDispatch();
+  const [isBookmarked, setIsBookmarked] = useState(
+    selectedPost.post.isBookmarked,
+  );
+  function bookMarkPressHandler() {
+    dispatch(postSlice.actions.setBookMark(selectedPost.post.postId));
+    setIsBookmarked(!isBookmarked);
+  }
   return (
     <View style={styles.menuModalContainer}>
       <View style={styles.knobContainer}>
@@ -14,13 +26,15 @@ const PostEllipsisMenu = () => {
       </View>
       <View style={styles.headerContainer}>
         <View style={styles.headerBoxContainer}>
-          <View style={styles.circle}>
-            <MaterialCommunityIcons
-              name="bookmark-outline"
-              size={30}
-              color={'black'}
-            />
-          </View>
+          <TouchableOpacity onPress={bookMarkPressHandler}>
+            <View style={styles.circle}>
+              <MaterialCommunityIcons
+                name={isBookmarked ? 'bookmark' : 'bookmark-outline'}
+                size={30}
+                color={'black'}
+              />
+            </View>
+          </TouchableOpacity>
           <Text style={styles.textNormal}>Save</Text>
         </View>
         <View style={styles.headerBoxContainer}>
