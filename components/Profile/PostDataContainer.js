@@ -2,16 +2,9 @@ import {FlatList, StyleSheet, View, Image} from 'react-native';
 import React, {useState} from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import PostRender from '../PostRender';
 
 const PostDataContainer = ({filteredPost}) => {
-  const renderPosts = ({item}) => {
-    return (
-      <View style={styles.yourPostImageContainer}>
-        <Image source={item.post.postImage} style={styles.yourPostImage} />
-      </View>
-    );
-  };
-
   return (
     <View style={styles.postRootContainer}>
       <View style={styles.postHeaderContainer}>
@@ -29,14 +22,7 @@ const PostDataContainer = ({filteredPost}) => {
           />
         </View>
       </View>
-      <View style={styles.allPostContainer}>
-        <FlatList
-          numColumns={3}
-          scrollEnabled={true}
-          data={filteredPost}
-          renderItem={renderPosts}
-        />
-      </View>
+      <PostRender filteredPost={filteredPost} />
     </View>
   );
 };
@@ -80,20 +66,5 @@ const styles = StyleSheet.create({
     // borderColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  allPostContainer: {
-    width: '100%',
-    height: '100%',
-    marginTop: 2,
-  },
-  yourPostImageContainer: {
-    // borderWidth:1,
-    margin: '0.33%',
-    height: 135,
-    width: '33%',
-  },
-  yourPostImage: {
-    height: 135,
-    width: '100%',
   },
 });
