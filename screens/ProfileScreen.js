@@ -18,7 +18,7 @@ import ProfileData from '../components/Profile/ProfileData';
 import YourPostData from '../components/Profile/YourPostData';
 import Menu from '../components/Profile/Menu';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({navigation}) => {
   const user = useSelector(state => state.user.userData);
   const post = useSelector(state => state.post.postData);
   const [multiAccountsModal, setMultiAccountsModal] = useState(false);
@@ -30,6 +30,11 @@ const ProfileScreen = () => {
 
   const toggleMenuModal = () => {
     setMenuModal(!menuModal);
+  };
+
+  const savedMenuPressHandler = () => {
+    toggleMenuModal();
+    navigation.navigate('SavedPostScreen');
   };
 
   const filteredPost = post.filter(item => item.userId === 1);
@@ -82,7 +87,7 @@ const ProfileScreen = () => {
         swipeDirection={['down']}
         onBackdropPress={toggleMenuModal}
         style={styles.modal}>
-        <Menu />
+        <Menu savedMenuPressHandler={savedMenuPressHandler} />
       </Modal>
     </SafeAreaView>
   );

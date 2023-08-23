@@ -15,6 +15,7 @@ import SearchScreen from './screens/SearchScreen';
 import AddPostScreen from './screens/AddPostScreen';
 import ReelScreen from './screens/ReelScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import SavedPostScreen from './screens/SavedPostScreen';
 
 //Screens
 
@@ -143,14 +144,18 @@ function App() {
         <Stack.Navigator
           screenOptions={({route}) => ({
             headerStyle: {
-              backgroundColor: 'black',
-              borderTopColor: 'transparent',
+              // borderTopColor: 'transparent',
             },
           })}>
           <Stack.Screen
             name="BottomTabScreens"
             component={BottomTabScreens}
             options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SavedPostScreen"
+            component={SavedPostScreen}
+            options={{headerTitle: 'All Saved Posts'}}
           />
         </Stack.Navigator>
       </NavigationContainer>

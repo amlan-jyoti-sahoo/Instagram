@@ -6,7 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
 
-const Menu = () => {
+const Menu = ({savedMenuPressHandler}) => {
   return (
     <View style={styles.menuModalContainer}>
       <View style={styles.knobContainer}>
@@ -41,7 +41,10 @@ const Menu = () => {
           <MaterialIcons name="qr-code-scanner" size={24} color={'black'} />
           <Text style={styles.textNormal}>QR code</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            savedMenuPressHandler();
+          }}>
           <View style={styles.itemContainer}>
             <Ionicons name="bookmarks-outline" size={24} color={'black'} />
             <Text style={styles.textNormal}>Saved</Text>
