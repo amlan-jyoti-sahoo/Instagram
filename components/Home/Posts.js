@@ -112,11 +112,7 @@ const Posts = () => {
   };
   return (
     <>
-      <View
-        style={{
-          flex: 1,
-          marginTop: 10,
-        }}>
+      <View style={styles.rootContainer}>
         <FlatList data={post} renderItem={renderPosts} />
       </View>
 
@@ -137,6 +133,10 @@ const Posts = () => {
 export default Posts;
 
 const styles = StyleSheet.create({
+  rootContainer: {
+    flex: 1,
+    marginTop: 10,
+  },
   textBold: {
     color: 'black',
     fontWeight: '600',

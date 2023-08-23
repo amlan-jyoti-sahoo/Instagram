@@ -1,28 +1,79 @@
-import {FlatList, StyleSheet, View, Image} from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  View,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useState} from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import PostRender from '../PostRender';
+import ReelRender from '../ReelRender';
+import TagPostRender from '../TagPostRender';
 
 const PostDataContainer = ({filteredPost}) => {
+  const [tabNo, setTabNo] = useState(1);
+  function PostReelRenderHandler(tabNo) {
+    setTabNo(tabNo);
+    console.log(tabNo);
+  }
   return (
     <View style={styles.postRootContainer}>
       <View style={styles.postHeaderContainer}>
-        <View style={styles.postHeaderInnerContainerActive}>
-          <MaterialIcons name="grid-on" size={28} color={'black'} />
+        <View
+          style={
+            tabNo === 1
+              ? styles.postHeaderInnerContainerActive
+              : styles.postHeaderInnerContainerInActive
+          }>
+          <TouchableOpacity
+            onPress={() => {
+              PostReelRenderHandler(1);
+            }}>
+            <MaterialIcons name="grid-on" size={28} color={'black'} />
+          </TouchableOpacity>
         </View>
-        <View style={styles.postHeaderInnerContainerInActive}>
-          <MaterialIcons name="video-collection" size={28} color={'#535353'} />
+        <View
+          style={
+            tabNo === 2
+              ? styles.postHeaderInnerContainerActive
+              : styles.postHeaderInnerContainerInActive
+          }>
+          <TouchableOpacity
+            onPress={() => {
+              PostReelRenderHandler(2);
+            }}>
+            <MaterialIcons
+              name="video-collection"
+              size={28}
+              color={'#535353'}
+            />
+          </TouchableOpacity>
         </View>
-        <View style={styles.postHeaderInnerContainerInActive}>
-          <MaterialCommunityIcons
-            name="contacts-outline"
-            size={28}
-            color={'#535353'}
-          />
+        <View
+          style={
+            tabNo === 3
+              ? styles.postHeaderInnerContainerActive
+              : styles.postHeaderInnerContainerInActive
+          }>
+          <TouchableOpacity
+            onPress={() => {
+              PostReelRenderHandler(3);
+            }}>
+            <MaterialCommunityIcons
+              name="contacts-outline"
+              size={28}
+              color={'#535353'}
+            />
+          </TouchableOpacity>
         </View>
       </View>
-      <PostRender filteredPost={filteredPost} />
+
+      {/* Post Render Component */}
+      {tabNo === 1 && <PostRender filteredPost={filteredPost} />}
+      {tabNo === 2 && <ReelRender />}
+      {tabNo === 3 && <TagPostRender />}
     </View>
   );
 };
