@@ -89,6 +89,7 @@ function App() {
           name="ReelScreen"
           component={ReelScreen}
           options={{
+            headerShown: false,
             headerTitle: 'reel',
             tabBarIcon: ({focused, color, size}) => (
               <MaterialIcons
