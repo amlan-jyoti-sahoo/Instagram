@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   reelHeaderContainer: {
     position: 'absolute',
-    top: 10,
+    top: 50,
     left: 0,
     right: 0,
     flexDirection: 'row',
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   reelTitle: {
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
     color: 'white',
   },
