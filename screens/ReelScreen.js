@@ -1,18 +1,21 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {Dimensions, FlatList, StyleSheet, Text, View} from 'react-native';
+import React, {useRef} from 'react';
 import Feather from 'react-native-vector-icons/Feather';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import ReelComponent from '../components/ReelComponent';
+import SingleReel from '../components/SingleReel';
+import {reelData} from '../data/reelData';
 
 const ReelScreen = () => {
+  const renderItem = item => {
+    return <SingleReel item={item} />;
+  };
   return (
-    <SafeAreaView style={styles.rootContainer}>
+    <View style={styles.rootContainer}>
       <View style={styles.reelHeaderContainer}>
         <Text style={styles.reelTitle}>Reels</Text>
         <Feather name="camera" size={25} color={'white'} />
       </View>
-      <ReelComponent />
-    </SafeAreaView>
+      <FlatList data={reelData} renderItem={({item}) => renderItem(item)} />
+    </View>
   );
 };
 
