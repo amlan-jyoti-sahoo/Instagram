@@ -35,6 +35,7 @@ const ReelRender = ({filteredReel}) => {
             repeat={true}
             resizeMode="cover"
             // paused={true}
+            muted={true}
             source={item.reel.video}
             style={styles.video}
           />
