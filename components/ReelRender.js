@@ -14,28 +14,31 @@ import Video from 'react-native-video';
 const ReelRender = ({filteredReel}) => {
   const navigation = useNavigation();
 
+  function postPressHandler(postId) {
+    console.log('hello');
+    navigation.navigate('PostScreen', {
+      postId: postId,
+      filteredPost: filteredPost,
+    });
+  }
+
   const renderPosts = ({item}) => {
-    function postPressHandler(postId) {
-      console.log('hello');
-      navigation.navigate('PostScreen', {
-        postId: postId,
-        filteredPost: filteredPost,
+    function postPressHandler(reelId) {
+      navigation.navigate('ReelScreen', {
+        reelId: reelId,
       });
     }
     return (
       <View style={styles.yourPostVideoContainer}>
-        {/* <TouchableOpacity onPress={() => postPressHandler(item.postId)}> */}
-        <Video
-          // videoRef={videoRef}
-          // onBuffer={onBuffer}
-          // onError={onError}
-          repeat={true}
-          resizeMode="cover"
-          // paused={true}
-          source={item.reel.video}
-          style={styles.video}
-        />
-        {/* </TouchableOpacity> */}
+        <TouchableOpacity onPress={() => postPressHandler(item.reelId)}>
+          <Video
+            repeat={true}
+            resizeMode="cover"
+            // paused={true}
+            source={item.reel.video}
+            style={styles.video}
+          />
+        </TouchableOpacity>
       </View>
     );
   };
