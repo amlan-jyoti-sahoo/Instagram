@@ -11,9 +11,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 
 import Video from 'react-native-video';
-const ReelRender = () => {
-  const reel = useSelector(state => state.reel.reelData);
-
+const ReelRender = ({filteredReel}) => {
   const navigation = useNavigation();
 
   const renderPosts = ({item}) => {
@@ -47,7 +45,7 @@ const ReelRender = () => {
       <FlatList
         numColumns={3}
         scrollEnabled={true}
-        data={reel}
+        data={filteredReel}
         renderItem={renderPosts}
       />
     </View>

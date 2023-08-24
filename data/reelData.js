@@ -22,7 +22,7 @@ export const reelData = [
     },
   },
   {
-    userId: 1,
+    userId: 2,
     reelId: 3,
 
     reel: {

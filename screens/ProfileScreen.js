@@ -21,6 +21,7 @@ import Menu from '../components/Profile/Menu';
 const ProfileScreen = ({navigation}) => {
   const user = useSelector(state => state.user.userData);
   const post = useSelector(state => state.post.postData);
+  const reel = useSelector(state => state.reel.reelData);
   const [multiAccountsModal, setMultiAccountsModal] = useState(false);
   const [menuModal, setMenuModal] = useState(false);
 
@@ -38,6 +39,7 @@ const ProfileScreen = ({navigation}) => {
   };
 
   const filteredPost = post.filter(item => item.userId === 1);
+  const filteredReel = reel.filter(item => item.userId === 1);
 
   return (
     <SafeAreaView style={styles.rootContainer}>
@@ -66,7 +68,10 @@ const ProfileScreen = ({navigation}) => {
       <StoryHighlightContainer />
 
       {/* Post area */}
-      <PostDataContainer filteredPost={filteredPost} />
+      <PostDataContainer
+        filteredPost={filteredPost}
+        filteredReel={filteredReel}
+      />
 
       {/* MultiAccountModal */}
       <Modal

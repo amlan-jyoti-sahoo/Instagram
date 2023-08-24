@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import Video from 'react-native-video';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -15,9 +15,24 @@ import {useDispatch, useSelector} from 'react-redux';
 import {postSlice} from '../../store/postSlice';
 import {userSlice} from '../../store/userSlice';
 import {reelSlice} from '../store/reelSlice';
+import Modal from 'react-native-modal';
+import PostEllipsisMenu from './Home/PostEllipsisMenu';
+import ReelEllipsisMenu from './reel/ReelEllipsisMenu';
 
 const SingleReel = ({item, index, currentIndex}) => {
   const dispatch = useDispatch();
+
+  const user = useSelector(state => state.user.userData);
+
+  const [ellipsisMenuModal, setEllipsisMenuModal] = useState(false);
+
+  const toggleEllipsisMenuModal = () => {
+    setEllipsisMenuModal(!ellipsisMenuModal);
+  };
+
+  function ellipsisMenuPressHandler() {
+    toggleEllipsisMenuModal();
+  }
 
   function likePressHandler() {
     dispatch(reelSlice.actions.setLike(item.reelId));
@@ -58,7 +73,9 @@ const SingleReel = ({item, index, currentIndex}) => {
           <Text style={styles.textBold}>234k</Text>
         </View>
         <View style={styles.reelSideInnerContainer}>
-          <Ionicons name="ellipsis-vertical" size={30} color={'white'} />
+          <TouchableOpacity onPress={toggleEllipsisMenuModal}>
+            <Ionicons name="ellipsis-vertical" size={30} color={'white'} />
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.reelleftSideContainer}>
@@ -95,7 +112,7 @@ const SingleReel = ({item, index, currentIndex}) => {
           resizeMode="cover"
           // paused={false}
           // controls={true}
-          // muted={true}
+          muted={true}
           playInBackground={true}
           // playWhenInactive={false}
           autoPlay={true}
@@ -103,6 +120,17 @@ const SingleReel = ({item, index, currentIndex}) => {
           style={styles.video}
         />
       </TouchableOpacity>
+
+      {/* MenuModal */}
+      <Modal
+        testID={'modal'}
+        isVisible={ellipsisMenuModal}
+        onSwipeComplete={() => {}}
+        swipeDirection={['down']}
+        onBackdropPress={toggleEllipsisMenuModal}
+        style={styles.modal}>
+        <ReelEllipsisMenu />
+      </Modal>
     </View>
   );
 };

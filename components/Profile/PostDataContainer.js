@@ -12,7 +12,7 @@ import PostRender from '../PostRender';
 import ReelRender from '../ReelRender';
 import TagPostRender from '../TagPostRender';
 
-const PostDataContainer = ({filteredPost}) => {
+const PostDataContainer = ({filteredPost, filteredReel}) => {
   const [tabNo, setTabNo] = useState(1);
   function PostReelRenderHandler(tabNo) {
     setTabNo(tabNo);
@@ -75,7 +75,7 @@ const PostDataContainer = ({filteredPost}) => {
 
       {/* Post Render Component */}
       {tabNo === 1 && <PostRender filteredPost={filteredPost} />}
-      {tabNo === 2 && <ReelRender />}
+      {tabNo === 2 && <ReelRender filteredReel={filteredReel} />}
       {tabNo === 3 && <TagPostRender />}
     </View>
   );
