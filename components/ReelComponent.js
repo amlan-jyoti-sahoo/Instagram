@@ -1,11 +1,26 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
+import {SwiperFlatList} from 'react-native-swiper-flatlist';
+import {reelData} from '../data/reelData';
+import SingleReel from './SingleReel';
 
 const ReelComponent = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const renderItem = ({item, index}) => {
+    <SingleReel item={item} index={index} currentIndex={currentIndex} />;
+  };
+
+  const changeIndexValueHandler = ({index}) => {
+    setCurrentIndex(index);
+  };
   return (
-    <View>
-      <Text>ReelComponent</Text>
-    </View>
+    <SwiperFlatList
+      data={reelData}
+      vertical={true}
+      renderItem={renderItem}
+      onChangeIndex={changeIndexValueHandler}
+      keyExtractor={(item, index) => index}
+    />
   );
 };
 

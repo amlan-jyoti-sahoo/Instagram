@@ -12,12 +12,12 @@ export const postSlice = createSlice({
   reducers: {
     setSelectedPost: (state, action) => {
       state.selectedPost = state.postData.find(
-        item => item.post.postId === action.payload,
+        item => item.postId === action.payload,
       );
     },
     setLike: (state, action) => {
       const selectedPostIndex = state.postData.findIndex(
-        item => item.post.postId === action.payload,
+        item => item.postId === action.payload,
       );
       const post = state.postData[selectedPostIndex];
       post.post.isLiked = !post.post.isLiked;
@@ -27,7 +27,7 @@ export const postSlice = createSlice({
     },
     setBookMark: (state, action) => {
       const selectedPostIndex = state.postData.findIndex(
-        item => item.post.postId === action.payload,
+        item => item.postId === action.payload,
       );
       const selectedPost = state.postData[selectedPostIndex];
       selectedPost.post.isBookmarked = !selectedPost.post.isBookmarked;

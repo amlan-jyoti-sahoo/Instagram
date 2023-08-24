@@ -28,7 +28,7 @@ const Posts = ({data, postId}) => {
 
   const flatListRef = useRef(null);
   useEffect(() => {
-    const index = data.findIndex(item => item.post.postId === postId);
+    const index = data.findIndex(item => item.postId === postId);
 
     if (index !== -1 && flatListRef.current) {
       flatListRef.current.scrollToIndex({index});
@@ -46,14 +46,14 @@ const Posts = ({data, postId}) => {
     const postUserIndex = user.findIndex(user => user.userId === item.userId);
     const postUser = user[postUserIndex];
     function likePressHandler() {
-      dispatch(postSlice.actions.setLike(item.post.postId));
+      dispatch(postSlice.actions.setLike(item.postId));
     }
     function bookMarkPressHandler() {
-      dispatch(postSlice.actions.setBookMark(item.post.postId));
+      dispatch(postSlice.actions.setBookMark(item.postId));
     }
     function ellipsisMenuPressHandler() {
       toggleEllipsisMenuModal();
-      dispatch(postSlice.actions.setSelectedPost(item.post.postId));
+      dispatch(postSlice.actions.setSelectedPost(item.postId));
       console.log(selectedPost);
     }
     return (

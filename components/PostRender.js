@@ -20,7 +20,7 @@ const PostRender = ({filteredPost}) => {
     }
     return (
       <View style={styles.yourPostImageContainer}>
-        <TouchableOpacity onPress={() => postPressHandler(item.post.postId)}>
+        <TouchableOpacity onPress={() => postPressHandler(item.postId)}>
           <Image source={item.post.postImage} style={styles.yourPostImage} />
         </TouchableOpacity>
       </View>

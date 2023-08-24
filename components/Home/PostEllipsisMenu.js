@@ -16,7 +16,7 @@ const PostEllipsisMenu = ({selectedPost}) => {
     selectedPost.post.isBookmarked,
   );
   function bookMarkPressHandler() {
-    dispatch(postSlice.actions.setBookMark(selectedPost.post.postId));
+    dispatch(postSlice.actions.setBookMark(selectedPost.postId));
     setIsBookmarked(!isBookmarked);
   }
   return (
