@@ -1,5 +1,5 @@
 import {Dimensions, FlatList, StyleSheet, Text, View} from 'react-native';
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import Feather from 'react-native-vector-icons/Feather';
 import SingleReel from '../components/SingleReel';
 import {useDispatch, useSelector} from 'react-redux';
@@ -12,6 +12,7 @@ const ReelScreen = () => {
   const renderItem = item => {
     return <SingleReel item={item} />;
   };
+
   return (
     <View style={styles.rootContainer}>
       <View style={styles.reelHeaderContainer}>

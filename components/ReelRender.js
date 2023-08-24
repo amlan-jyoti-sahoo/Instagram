@@ -24,18 +24,18 @@ const ReelRender = ({filteredReel}) => {
     }
     return (
       <View style={styles.yourPostVideoContainer}>
-        <TouchableOpacity onPress={() => postPressHandler(item.postId)}>
-          <Video
-            // videoRef={videoRef}
-            // onBuffer={onBuffer}
-            // onError={onError}
-            repeat={true}
-            resizeMode="cover"
-            paused={true}
-            source={item.reel.video}
-            style={styles.video}
-          />
-        </TouchableOpacity>
+        {/* <TouchableOpacity onPress={() => postPressHandler(item.postId)}> */}
+        <Video
+          // videoRef={videoRef}
+          // onBuffer={onBuffer}
+          // onError={onError}
+          repeat={true}
+          resizeMode="cover"
+          paused={true}
+          source={item.reel.video}
+          style={styles.video}
+        />
+        {/* </TouchableOpacity> */}
       </View>
     );
   };
@@ -63,11 +63,11 @@ const styles = StyleSheet.create({
   yourPostVideoContainer: {
     // borderWidth:1,
     margin: '0.33%',
-    height: 135,
+    height: 230,
     width: '33%',
   },
   video: {
-    height: 135,
+    height: 230,
     width: '100%',
   },
 });

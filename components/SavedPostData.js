@@ -11,7 +11,11 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import PostRender from './PostRender';
 import ReelRender from './ReelRender';
 import TagPostRender from './TagPostRender';
+import {useDispatch, useSelector} from 'react-redux';
 const SavedPostData = ({filteredPost}) => {
+  const reel = useSelector(state => state.reel.reelData);
+  const filteredReel = reel.filter(item => item.reel.isBookmarked === true);
+
   const [tabNo, setTabNo] = useState(1);
   function PostReelRenderHandler(tabNo) {
     setTabNo(tabNo);
@@ -53,29 +57,11 @@ const SavedPostData = ({filteredPost}) => {
             />
           </TouchableOpacity>
         </View>
-        {/* <View
-          style={
-            tabNo === 3
-              ? styles.postHeaderInnerContainerActive
-              : styles.postHeaderInnerContainerInActive
-          }>
-          <TouchableOpacity
-            onPress={() => {
-              PostReelRenderHandler(3);
-            }}>
-            <MaterialCommunityIcons
-              name="contacts-outline"
-              size={28}
-              color={'#535353'}
-            />
-          </TouchableOpacity>
-        </View> */}
       </View>
 
       {/* Post Render Component */}
       {tabNo === 1 && <PostRender filteredPost={filteredPost} />}
-      {tabNo === 2 && <ReelRender />}
-      {tabNo === 3 && <TagPostRender />}
+      {tabNo === 2 && <ReelRender filteredReel={filteredReel} />}
     </View>
   );
 };

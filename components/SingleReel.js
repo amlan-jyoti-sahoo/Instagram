@@ -12,30 +12,18 @@ import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useDispatch, useSelector} from 'react-redux';
-import {postSlice} from '../../store/postSlice';
 import {userSlice} from '../../store/userSlice';
 import {reelSlice} from '../store/reelSlice';
-import Modal from 'react-native-modal';
-import PostEllipsisMenu from './Home/PostEllipsisMenu';
-import ReelEllipsisMenu from './reel/ReelEllipsisMenu';
 
 const SingleReel = ({item, index, currentIndex}) => {
   const dispatch = useDispatch();
 
-  const user = useSelector(state => state.user.userData);
-
-  const [ellipsisMenuModal, setEllipsisMenuModal] = useState(false);
-
-  const toggleEllipsisMenuModal = () => {
-    setEllipsisMenuModal(!ellipsisMenuModal);
-  };
-
-  function ellipsisMenuPressHandler() {
-    toggleEllipsisMenuModal();
-  }
-
   function likePressHandler() {
     dispatch(reelSlice.actions.setLike(item.reelId));
+  }
+
+  function bookMarkPressHandler() {
+    dispatch(reelSlice.actions.setBookMark(item.reelId));
   }
 
   const videoRef = useRef(null);
@@ -47,91 +35,89 @@ const SingleReel = ({item, index, currentIndex}) => {
     console.log('video Error', error);
   };
   return (
-    <View style={styles.videoContainer}>
-      <View style={styles.reelSideContainer}>
-        <View style={styles.reelSideInnerContainer}>
-          <TouchableOpacity onPress={likePressHandler}>
-            <MaterialCommunityIcons
-              name={item.reel.isLiked ? 'cards-heart' : 'cards-heart-outline'}
-              size={35}
-              color={item.reel.isLiked ? '#f01717' : 'white'}
-            />
-          </TouchableOpacity>
-          <Text style={styles.textBold}>{item.reel.likes}</Text>
-        </View>
-        <View style={styles.reelSideInnerContainer}>
-          <Feather
-            style={{transform: [{rotateY: '180deg'}]}}
-            name="message-circle"
-            size={30}
-            color={'white'}
-          />
-          <Text style={styles.textBold}>123</Text>
-        </View>
-        <View style={styles.reelSideInnerContainer}>
-          <Feather name="send" size={30} color={'white'} />
-          <Text style={styles.textBold}>234k</Text>
-        </View>
-        <View style={styles.reelSideInnerContainer}>
-          <TouchableOpacity onPress={toggleEllipsisMenuModal}>
-            <Ionicons name="ellipsis-vertical" size={30} color={'white'} />
-          </TouchableOpacity>
-        </View>
-      </View>
-      <View style={styles.reelleftSideContainer}>
-        <View style={styles.logoNameContainer}>
-          <View
-            style={
-              true
-                ? styles.postHeaderImageContainer
-                : styles.postHeaderImageNonStatusContainer
-            }>
-            <Image
-              source={require('../assets/images/Amlan.png')}
-              style={styles.postHeaderImage}
-            />
+    <>
+      <View style={styles.videoContainer}>
+        <View style={styles.reelSideContainer}>
+          <View style={styles.reelSideInnerContainer}>
+            <TouchableOpacity onPress={likePressHandler}>
+              <MaterialCommunityIcons
+                name={item.reel.isLiked ? 'cards-heart' : 'cards-heart-outline'}
+                size={35}
+                color={item.reel.isLiked ? '#f01717' : 'white'}
+              />
+            </TouchableOpacity>
+            <Text style={styles.textBold}>{item.reel.likes}</Text>
           </View>
-          <Text style={styles.textBold}>amlan_jyoti_aj</Text>
+          <View style={styles.reelSideInnerContainer}>
+            <Feather
+              style={{transform: [{rotateY: '180deg'}]}}
+              name="message-circle"
+              size={30}
+              color={'white'}
+            />
+            <Text style={styles.textBold}>123</Text>
+          </View>
+          <View style={styles.reelSideInnerContainer}>
+            <Feather name="send" size={30} color={'white'} />
+            <Text style={styles.textBold}>234k</Text>
+          </View>
+          <View style={styles.reelSideInnerContainer}>
+            <TouchableOpacity onPress={bookMarkPressHandler}>
+              <MaterialCommunityIcons
+                name={item.reel.isBookmarked ? 'bookmark' : 'bookmark-outline'}
+                size={30}
+                color={'white'}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.reelSideInnerContainer}>
+            <Ionicons name="ellipsis-vertical" size={30} color={'white'} />
+          </View>
         </View>
-        <View style={{marginLeft: 12}}>
-          <Text style={styles.textNormal}>
-            Space Habitat in Future. #FutureSpaceHome
-          </Text>
-          <Text style={styles.textlight}>
-            #FutureSpaceHome #space #Bishop Ring
-          </Text>
+        <View style={styles.reelleftSideContainer}>
+          <View style={styles.logoNameContainer}>
+            <View
+              style={
+                true
+                  ? styles.postHeaderImageContainer
+                  : styles.postHeaderImageNonStatusContainer
+              }>
+              <Image
+                source={require('../assets/images/Amlan.png')}
+                style={styles.postHeaderImage}
+              />
+            </View>
+            <Text style={styles.textBold}>amlan_jyoti_aj</Text>
+          </View>
+          <View style={{marginLeft: 12}}>
+            <Text style={styles.textNormal}>
+              Space Habitat in Future. #FutureSpaceHome
+            </Text>
+            <Text style={styles.textlight}>
+              #FutureSpaceHome #space #Bishop Ring
+            </Text>
+          </View>
         </View>
+        <TouchableOpacity
+          style={{height: '100%', width: '100%', position: 'absolute'}}>
+          <Video
+            videoRef={videoRef}
+            onBuffer={onBuffer}
+            onError={onError}
+            repeat={true}
+            resizeMode="cover"
+            // paused={false}
+            controls={true}
+            muted={true}
+            playInBackground={true}
+            // playWhenInactive={false}
+            autoPlay={true}
+            source={item.reel.video}
+            style={styles.video}
+          />
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        style={{height: '100%', width: '100%', position: 'absolute'}}>
-        <Video
-          videoRef={videoRef}
-          onBuffer={onBuffer}
-          onError={onError}
-          repeat={true}
-          resizeMode="cover"
-          // paused={false}
-          // controls={true}
-          muted={true}
-          playInBackground={true}
-          // playWhenInactive={false}
-          autoPlay={true}
-          source={item.reel.video}
-          style={styles.video}
-        />
-      </TouchableOpacity>
-
-      {/* MenuModal */}
-      <Modal
-        testID={'modal'}
-        isVisible={ellipsisMenuModal}
-        onSwipeComplete={() => {}}
-        swipeDirection={['down']}
-        onBackdropPress={toggleEllipsisMenuModal}
-        style={styles.modal}>
-        <ReelEllipsisMenu />
-      </Modal>
-    </View>
+    </>
   );
 };
 
@@ -165,7 +151,7 @@ const styles = StyleSheet.create({
   },
   reelSideContainer: {
     position: 'absolute',
-    height: 300,
+    height: 350,
     bottom: 100,
     right: 5,
     justifyContent: 'space-between',
