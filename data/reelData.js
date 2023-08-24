@@ -4,7 +4,7 @@ export const reelData = [
     reelId: 1,
 
     reel: {
-      video: require('../assets/videos/reel2.mp4'),
+      video: require('../assets/videos/reel4.mp4'),
       likes: 234,
       isLiked: false,
       isBookmarked: false,
@@ -15,7 +15,7 @@ export const reelData = [
     reelId: 2,
 
     reel: {
-      video: require('../assets/videos/reel1.mp4'),
+      video: require('../assets/videos/reel3.mp4'),
       likes: 453,
       isLiked: false,
       isBookmarked: false,
@@ -26,7 +26,7 @@ export const reelData = [
     reelId: 3,
 
     reel: {
-      video: require('../assets/videos/reel2.mp4'),
+      video: require('../assets/videos/reel1.mp4'),
       likes: 353,
       isLiked: false,
       isBookmarked: false,
@@ -37,7 +37,7 @@ export const reelData = [
     reelId: 4,
 
     reel: {
-      video: require('../assets/videos/reel1.mp4'),
+      video: require('../assets/videos/reel2.mp4'),
       likes: 643,
       isLiked: false,
       isBookmarked: false,

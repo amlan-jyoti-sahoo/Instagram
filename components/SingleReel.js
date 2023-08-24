@@ -11,8 +11,18 @@ import Video from 'react-native-video';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useDispatch, useSelector} from 'react-redux';
+import {postSlice} from '../../store/postSlice';
+import {userSlice} from '../../store/userSlice';
+import {reelSlice} from '../store/reelSlice';
 
 const SingleReel = ({item, index, currentIndex}) => {
+  const dispatch = useDispatch();
+
+  function likePressHandler() {
+    dispatch(reelSlice.actions.setLike(item.reelId));
+  }
+
   const videoRef = useRef(null);
 
   const onBuffer = buffer => {
@@ -25,7 +35,7 @@ const SingleReel = ({item, index, currentIndex}) => {
     <View style={styles.videoContainer}>
       <View style={styles.reelSideContainer}>
         <View style={styles.reelSideInnerContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={likePressHandler}>
             <MaterialCommunityIcons
               name={item.reel.isLiked ? 'cards-heart' : 'cards-heart-outline'}
               size={35}
@@ -83,9 +93,12 @@ const SingleReel = ({item, index, currentIndex}) => {
           onError={onError}
           repeat={true}
           resizeMode="cover"
-          paused={true}
-          controls={true}
-          muted={true}
+          // paused={false}
+          // controls={true}
+          // muted={true}
+          playInBackground={true}
+          // playWhenInactive={false}
+          autoPlay={true}
           source={item.reel.video}
           style={styles.video}
         />

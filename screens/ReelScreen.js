@@ -2,9 +2,13 @@ import {Dimensions, FlatList, StyleSheet, Text, View} from 'react-native';
 import React, {useRef} from 'react';
 import Feather from 'react-native-vector-icons/Feather';
 import SingleReel from '../components/SingleReel';
-import {reelData} from '../data/reelData';
+import {useDispatch, useSelector} from 'react-redux';
+import {postSlice} from '../../store/postSlice';
+import {userSlice} from '../../store/userSlice';
 
 const ReelScreen = () => {
+  const reel = useSelector(state => state.reel.reelData);
+
   const renderItem = item => {
     return <SingleReel item={item} />;
   };
@@ -14,7 +18,7 @@ const ReelScreen = () => {
         <Text style={styles.reelTitle}>Reels</Text>
         <Feather name="camera" size={25} color={'white'} />
       </View>
-      <FlatList data={reelData} renderItem={({item}) => renderItem(item)} />
+      <FlatList data={reel} renderItem={({item}) => renderItem(item)} />
     </View>
   );
 };
