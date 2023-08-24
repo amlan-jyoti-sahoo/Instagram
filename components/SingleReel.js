@@ -51,6 +51,30 @@ const SingleReel = ({item, index, currentIndex}) => {
           <Ionicons name="ellipsis-vertical" size={30} color={'white'} />
         </View>
       </View>
+      <View style={styles.reelleftSideContainer}>
+        <View style={styles.logoNameContainer}>
+          <View
+            style={
+              true
+                ? styles.postHeaderImageContainer
+                : styles.postHeaderImageNonStatusContainer
+            }>
+            <Image
+              source={require('../assets/images/Amlan.png')}
+              style={styles.postHeaderImage}
+            />
+          </View>
+          <Text style={styles.textBold}>amlan_jyoti_aj</Text>
+        </View>
+        <View style={{marginLeft: 12}}>
+          <Text style={styles.textNormal}>
+            Space Habitat in Future. #FutureSpaceHome
+          </Text>
+          <Text style={styles.textlight}>
+            #FutureSpaceHome #space #Bishop Ring
+          </Text>
+        </View>
+      </View>
       <TouchableOpacity
         style={{height: '100%', width: '100%', position: 'absolute'}}>
         <Video
@@ -80,6 +104,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
   },
+  textNormal: {
+    fontWeight: '500',
+    color: 'white',
+  },
+  textlight: {
+    fontWeight: '200',
+    color: 'white',
+  },
   videoContainer: {
     height: height,
     width: width,
@@ -105,9 +137,50 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  reelleftSideContainer: {
+    position: 'absolute',
+    height: 100,
+    width: 300,
+    bottom: 100,
+    left: 5,
+    zIndex: 1,
+  },
   reelTitle: {
     fontSize: 20,
     fontWeight: 'bold',
     color: 'white',
+  },
+
+  postHeaderImageContainer: {
+    borderWidth: 1,
+    height: 40,
+    width: 40,
+    borderColor: '#b42727',
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 10,
+  },
+  postHeaderImageNonStatusContainer: {
+    borderWidth: 1,
+    height: 40,
+    width: 40,
+    borderColor: '#b1abab',
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    marginHorizontal: 10,
+  },
+  postHeaderImage: {
+    height: 35,
+    width: 35,
+    borderRadius: 50,
+  },
+  logoNameContainer: {
+    width: 200,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
   },
 });

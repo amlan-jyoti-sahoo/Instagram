@@ -14,6 +14,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {reelSlice} from './reelSlice';
 
 const persistConfig = {
   key: 'root',
@@ -23,6 +24,7 @@ const persistConfig = {
 let rootReducer = combineReducers({
   user: userSlice.reducer,
   post: postSlice.reducer,
+  reel: reelSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
