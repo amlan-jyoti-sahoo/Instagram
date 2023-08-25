@@ -40,7 +40,7 @@ const SingleComment = ({item, selectedPost}) => {
       <View style={styles.singleCommentBoxContainer}>
         <View
           style={
-            user[0].hasStatus
+            user[selectedUserIndex].hasStatus
               ? styles.postHeaderImageContainer
               : styles.postHeaderImageNonStatusContainer
           }>
@@ -138,7 +138,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   postHeaderImageNonStatusContainer: {
-    borderWidth: 1,
     height: 50,
     width: 50,
     borderColor: '#b1abab',
