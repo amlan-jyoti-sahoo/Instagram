@@ -1,16 +1,35 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import Feather from 'react-native-vector-icons/Feather';
+import {launchImageLibrary} from 'react-native-image-picker';
 
 const ProfileData = ({filteredPost}) => {
+  const [selectImage, setselectImage] = useState('');
+
+  const ImagePicker = async () => {
+    try {
+      let options = {
+        storageOptions: {
+          path: 'image',
+        },
+      };
+      const result = await launchImageLibrary(options);
+      setselectImage(result.assets[0].uri);
+      console.log(result.assets[0].uri);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <View style={styles.profileDataContainer}>
       <View style={styles.profileUpperDataContainer}>
         <View style={styles.profileImageContainer}>
-          <Image
-            source={require('../../assets/images/Amlan.png')}
-            style={{height: 90, width: 90, borderRadius: 50}}
-          />
+          <TouchableOpacity onPress={ImagePicker}>
+            <Image
+              source={require('../../assets/images/Amlan.png')}
+              style={{height: 90, width: 90, borderRadius: 50}}
+            />
+          </TouchableOpacity>
         </View>
         <View style={styles.ProfileTextData}>
           <Text style={[styles.textBold, {fontSize: 18}]}>
