@@ -20,7 +20,12 @@ const CommentRender = ({selectedPost}) => {
   const post = useSelector(state => state.post.postData);
 
   const [inputText, setInputText] = useState('');
-  //   const [allComments, setAllComments] = useState();
+  const selectedPostIndex = post.findIndex(
+    item => item.postId === selectedPost.postId,
+  );
+  const [allComments, setAllComments] = useState(
+    post[selectedPostIndex].post.comments,
+  );
 
   const handleInputChange = text => {
     setInputText(text);
@@ -33,6 +38,15 @@ const CommentRender = ({selectedPost}) => {
         comment: inputText,
       }),
     );
+    const prevComments = [...allComments];
+    const newComment = {
+      commentId: prevComments.length + 1,
+      userId: 1,
+      comment: inputText,
+      likes: 0,
+      isLiked: false,
+    };
+    setAllComments([...prevComments, newComment]);
     setInputText('');
   }
 
@@ -48,7 +62,7 @@ const CommentRender = ({selectedPost}) => {
         <Text style={styles.textBold}>Comments</Text>
       </View>
       <View style={styles.divider}></View>
-      <FlatList data={selectedPost.post.comments} renderItem={renderItem} />
+      <FlatList data={allComments} renderItem={renderItem} />
       <View style={styles.bottomContainer}>
         <View>
           <Image source={user[0].profileImage} style={styles.image} />
