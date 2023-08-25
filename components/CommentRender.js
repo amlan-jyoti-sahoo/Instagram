@@ -20,16 +20,15 @@ const CommentRender = ({selectedPost}) => {
   const post = useSelector(state => state.post.postData);
 
   const [inputText, setInputText] = useState('');
+  const handleInputChange = text => {
+    setInputText(text);
+  };
   const selectedPostIndex = post.findIndex(
     item => item.postId === selectedPost.postId,
   );
   const [allComments, setAllComments] = useState(
     post[selectedPostIndex].post.comments,
   );
-
-  const handleInputChange = text => {
-    setInputText(text);
-  };
 
   function sendButtonPressHandler() {
     dispatch(
