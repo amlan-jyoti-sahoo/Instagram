@@ -34,6 +34,21 @@ export const postSlice = createSlice({
       selectedPost.post.isBookmarked = !selectedPost.post.isBookmarked;
     },
 
+    setNewPost: (state, action) => {
+      const newPost = {
+        userId: 1,
+        postId: state.postData.length + 1,
+        post: {
+          postImage: action.payload,
+          likes: 0,
+          isLiked: false,
+          isBookmarked: false,
+          comments: [],
+        },
+      };
+      state.postData.push(newPost);
+    },
+
     setNewComment: (state, action) => {
       const selectedPostIndex = state.postData.findIndex(
         item => item.postId === action.payload.postId,
