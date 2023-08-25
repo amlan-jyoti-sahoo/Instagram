@@ -33,6 +33,24 @@ export const postSlice = createSlice({
       const selectedPost = state.postData[selectedPostIndex];
       selectedPost.post.isBookmarked = !selectedPost.post.isBookmarked;
     },
+
+    setNewComment: (state, action) => {
+      const selectedPostIndex = state.postData.findIndex(
+        item => item.postId === action.payload.postId,
+      );
+
+      const comments = state.postData[selectedPostIndex].post.comments;
+      const newComment = {
+        commentId: comments.length + 1,
+        userId: 1,
+        comment: action.payload.comment,
+        likes: 0,
+        isLiked: false,
+      };
+
+      comments.push(newComment);
+    },
+
     setCommentLike: (state, action) => {
       const selectedPostIndex = state.postData.findIndex(
         item => item.postId === action.payload.postId,

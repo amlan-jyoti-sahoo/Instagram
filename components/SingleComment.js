@@ -3,71 +3,79 @@ import {
   Image,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {postSlice} from '../store/postSlice';
-import SingleComment from './SingleComment';
-
-const CommentRender = ({selectedPost}) => {
+const SingleComment = ({item, selectedPost}) => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user.userData);
   const post = useSelector(state => state.post.postData);
 
-  const [inputText, setInputText] = useState('');
-  //   const [allComments, setAllComments] = useState();
+  const selectedUserIndex = user.findIndex(user => user.userId === item.userId);
+  const [likes, setLikes] = useState(item.likes);
+  const [isLiked, setIsLiked] = useState(item.isLiked);
 
-  const handleInputChange = text => {
-    setInputText(text);
-  };
-
-  function sendButtonPressHandler() {
+  let likesCount = likes;
+  function likePressHandler() {
     dispatch(
-      postSlice.actions.setNewComment({
+      postSlice.actions.setCommentLike({
+        commentId: item.commentId,
         postId: selectedPost.postId,
-        comment: inputText,
       }),
     );
-    setInputText('');
+    setIsLiked(!isLiked);
+    {
+      isLiked ? likesCount-- : likesCount++;
+    }
+    setLikes(likesCount);
   }
 
-  const renderItem = ({item}) => {
-    return <SingleComment item={item} selectedPost={selectedPost} />;
-  };
   return (
-    <View style={styles.menuModalContainer}>
-      <View style={styles.knobContainer}>
-        <View style={styles.knob}></View>
-      </View>
-      <View style={styles.headerBox}>
-        <Text style={styles.textBold}>Comments</Text>
-      </View>
-      <View style={styles.divider}></View>
-      <FlatList data={selectedPost.post.comments} renderItem={renderItem} />
-      <View style={styles.bottomContainer}>
-        <View>
-          <Image source={user[0].profileImage} style={styles.image} />
+    <View style={styles.commentsRootContainer}>
+      <View style={styles.singleCommentBoxContainer}>
+        <View
+          style={
+            user[0].hasStatus
+              ? styles.postHeaderImageContainer
+              : styles.postHeaderImageNonStatusContainer
+          }>
+          <Image
+            source={user[selectedUserIndex].profileImage}
+            style={styles.postHeaderImage}
+          />
         </View>
-        <TextInput
-          placeholder="Add a comment.."
-          style={styles.input}
-          value={inputText}
-          onChangeText={handleInputChange}
-        />
-        <TouchableOpacity onPress={sendButtonPressHandler}>
-          <Ionicons name="send" size={30} color={'black'} />
-        </TouchableOpacity>
+        <View style={styles.commentTextContainer}>
+          <Text style={[styles.textBold, {color: '#605f5f'}]}>
+            {user[selectedUserIndex].userName}
+            <Text style={styles.textNormal}> 2d</Text>
+          </Text>
+          <Text style={styles.textBold}>{item.comment}</Text>
+          <View style={[styles.commentTextInnerContainer]}>
+            <Text style={styles.textNormal}>Reply</Text>
+            <Text style={styles.textNormal}>See translation</Text>
+          </View>
+        </View>
+        <View style={styles.commentRightSideContainer}>
+          <TouchableOpacity onPress={likePressHandler}>
+            <MaterialCommunityIcons
+              name={isLiked ? 'cards-heart' : 'cards-heart-outline'}
+              size={24}
+              color={isLiked ? '#f01717' : '#555353'}
+            />
+          </TouchableOpacity>
+          <Text style={styles.textNormal}>{likesCount}</Text>
+        </View>
       </View>
     </View>
   );
 };
 
-export default CommentRender;
+export default SingleComment;
 
 const styles = StyleSheet.create({
   textBold: {
@@ -156,28 +164,5 @@ const styles = StyleSheet.create({
   commentRightSideContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  bottomContainer: {
-    marginTop: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-
-  image: {height: 40, width: 40, borderRadius: 50},
-
-  //input
-
-  input: {
-    width: 280,
-    height: 40,
-    borderColor: '#000000',
-    borderRadius: 50,
-    borderWidth: 1,
-    marginTop: 10,
-    paddingHorizontal: 8,
-    fontSize: 15,
-    paddingLeft: 10,
-    fontWeight: '500',
   },
 });
