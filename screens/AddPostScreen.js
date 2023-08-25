@@ -8,14 +8,10 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import UploadImage from '../assets/images/UploadImage.jpeg';
-
 import {launchImageLibrary} from 'react-native-image-picker';
-
 import {useDispatch, useSelector} from 'react-redux';
-
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import {postSlice} from '../store/postSlice';
-
+import Toast from 'react-native-simple-toast';
 const AddPostScreen = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user.userData);
@@ -39,6 +35,7 @@ const AddPostScreen = () => {
   const savePressHandler = () => {
     dispatch(postSlice.actions.setNewPost(image));
     setImage(UploadImage);
+    Toast.showWithGravity('Successfully saved to Posts', Toast.LONG, Toast.TOP);
   };
   const cancelPressHandler = text => {
     setImage(UploadImage);
