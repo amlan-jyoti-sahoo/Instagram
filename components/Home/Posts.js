@@ -17,6 +17,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {postSlice} from '../../store/postSlice';
 import {userSlice} from '../../store/userSlice';
 import PostEllipsisMenu from './PostEllipsisMenu';
+import CommentRender from '../CommentRender';
 
 const Posts = ({data, postId}) => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const Posts = ({data, postId}) => {
   const selectedPost = useSelector(state => state.post.selectedPost);
 
   const [ellipsisMenuModal, setEllipsisMenuModal] = useState(false);
+  const [commentModal, setCommentModal] = useState(false);
 
   const flatListRef = useRef(null);
   useEffect(() => {
@@ -37,6 +39,9 @@ const Posts = ({data, postId}) => {
 
   const toggleEllipsisMenuModal = () => {
     setEllipsisMenuModal(!ellipsisMenuModal);
+  };
+  const toggleCommentModal = () => {
+    setCommentModal(!commentModal);
   };
 
   const renderPosts = ({item}) => {
@@ -53,6 +58,11 @@ const Posts = ({data, postId}) => {
     }
     function ellipsisMenuPressHandler() {
       toggleEllipsisMenuModal();
+      dispatch(postSlice.actions.setSelectedPost(item.postId));
+      console.log(selectedPost);
+    }
+    function commentPressHandler() {
+      toggleCommentModal();
       dispatch(postSlice.actions.setSelectedPost(item.postId));
       console.log(selectedPost);
     }
@@ -96,12 +106,14 @@ const Posts = ({data, postId}) => {
                 color={item.post.isLiked ? '#f01717' : 'black'}
               />
             </TouchableOpacity>
-            <FeatherIcon
-              style={{transform: [{rotateY: '180deg'}]}}
-              name="message-circle"
-              size={30}
-              color={'black'}
-            />
+            <TouchableOpacity onPress={commentPressHandler}>
+              <FeatherIcon
+                style={{transform: [{rotateY: '180deg'}]}}
+                name="message-circle"
+                size={30}
+                color={'black'}
+              />
+            </TouchableOpacity>
             <FeatherIcon name="send" size={30} color={'black'} />
           </View>
           <TouchableOpacity onPress={bookMarkPressHandler}>
@@ -147,6 +159,17 @@ const Posts = ({data, postId}) => {
         onBackdropPress={toggleEllipsisMenuModal}
         style={styles.modal}>
         <PostEllipsisMenu selectedPost={selectedPost} />
+      </Modal>
+
+      {/* CommentModal */}
+      <Modal
+        testID={'modal'}
+        isVisible={commentModal}
+        onSwipeComplete={() => {}}
+        swipeDirection={['down']}
+        onBackdropPress={toggleCommentModal}
+        style={styles.modal}>
+        <CommentRender selectedPost={selectedPost} />
       </Modal>
     </>
   );

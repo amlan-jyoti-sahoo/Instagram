@@ -13,13 +13,13 @@ export const UserData = [
     userId: 1,
     userName: 'Amlanjyoti Sahoo',
     profileImage: AmlanImg,
-    hasStatus: false,
+    hasStatus: true,
   },
   {
     userId: 2,
     userName: 'Shubham Kadam',
     profileImage: ShubhamImg,
-    hasStatus: false,
+    hasStatus: true,
   },
   {
     userId: 3,
@@ -43,7 +43,7 @@ export const UserData = [
     userId: 6,
     userName: 'Gauri Gajanan',
     profileImage: GauriImg,
-    hasStatus: false,
+    hasStatus: true,
   },
   {
     userId: 7,
@@ -55,7 +55,7 @@ export const UserData = [
     userId: 8,
     userName: 'Rishabh Deo',
     profileImage: RishabhImg,
-    hasStatus: false,
+    hasStatus: true,
   },
   {
     userId: 9,

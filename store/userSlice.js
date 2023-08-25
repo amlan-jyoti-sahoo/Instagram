@@ -24,8 +24,7 @@ export const userSlice = createSlice({
         user => user.userId === action.payload,
       );
 
-      state.userData[tappedUserIndex].hasStatus =
-        !state.userData[tappedUserIndex].hasStatus;
+      state.userData[tappedUserIndex].hasStatus = false;
       console.log(state.userData[tappedUserIndex].hasStatus);
     },
   },
