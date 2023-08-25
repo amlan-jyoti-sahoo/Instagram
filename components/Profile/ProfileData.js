@@ -3,7 +3,12 @@ import React, {useState} from 'react';
 import Feather from 'react-native-vector-icons/Feather';
 import {launchImageLibrary} from 'react-native-image-picker';
 
+import {useDispatch, useSelector} from 'react-redux';
+import {userSlice} from '../../store/userSlice';
+
 const ProfileData = ({filteredPost}) => {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user.userData);
   const [selectImage, setselectImage] = useState('');
 
   const ImagePicker = async () => {
@@ -15,7 +20,7 @@ const ProfileData = ({filteredPost}) => {
       };
       const result = await launchImageLibrary(options);
       setselectImage(result.assets[0].uri);
-      console.log(result.assets[0].uri);
+      dispatch(userSlice.actions.setProfilePhoto(result.assets[0].uri));
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +31,7 @@ const ProfileData = ({filteredPost}) => {
         <View style={styles.profileImageContainer}>
           <TouchableOpacity onPress={ImagePicker}>
             <Image
-              source={require('../../assets/images/Amlan.png')}
+              source={user[0].profileImage}
               style={{height: 90, width: 90, borderRadius: 50}}
             />
           </TouchableOpacity>

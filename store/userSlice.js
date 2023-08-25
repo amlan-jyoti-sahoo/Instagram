@@ -15,6 +15,10 @@ export const userSlice = createSlice({
         item => item.userId === action.payload,
       );
     },
+    setProfilePhoto: (state, action) => {
+      console.log(action.payload),
+        (state.userData[0].profileImage = {uri: action.payload});
+    },
     showStory: (state, action) => {
       const tappedUserIndex = state.userData.findIndex(
         user => user.userId === action.payload,
