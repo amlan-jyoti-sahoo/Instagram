@@ -3,43 +3,38 @@ import {userSlice} from './userSlice';
 import {postSlice} from './postSlice';
 import {reelSlice} from './reelSlice';
 
-// import {combineReducers} from '@reduxjs/toolkit';
-// import {
-//   persistStore,
-//   persistReducer,
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from 'redux-persist';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
+import {combineReducers} from '@reduxjs/toolkit';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// const persistConfig = {
-//   key: 'root',
-//   storage: AsyncStorage,
-// };
+const persistConfig = {
+  key: 'root',
+  storage: AsyncStorage,
+};
 
-// let rootReducer = combineReducers({
-//   user: userSlice.reducer,
-//   post: postSlice.reducer,
-//   reel: reelSlice.reducer,
-// });
+let rootReducer = combineReducers({
+  user: userSlice.reducer,
+  post: postSlice.reducer,
+  reel: reelSlice.reducer,
+});
 
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: {
-    user: userSlice.reducer,
-    post: postSlice.reducer,
-    reel: reelSlice.reducer,
-  },
-  // persistedReducer,
-  // middleware: getDefaultMiddleware =>
-  //   getDefaultMiddleware({
-  //     serializableCheck: {
-  //       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-  //     },
-  //   }),
+  reducer: persistedReducer,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
