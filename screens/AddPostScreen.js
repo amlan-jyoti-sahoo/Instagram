@@ -5,10 +5,11 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  PermissionsAndroid,
 } from 'react-native';
 import React, {useState} from 'react';
 import UploadImage from '../assets/images/UploadImage.jpeg';
-import {launchImageLibrary} from 'react-native-image-picker';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {useDispatch, useSelector} from 'react-redux';
 import {postSlice} from '../store/postSlice';
 import Toast from 'react-native-simple-toast';
@@ -41,6 +42,42 @@ const AddPostScreen = () => {
     setImage(UploadImage);
   };
 
+  const requestCameraPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        {
+          title: 'Instagram App Camera Permission',
+          message:
+            'Instgram Photo App needs access to your camera ' +
+            'so you can take awesome pictures.',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        openCamera();
+        console.log('You can use the camera');
+      } else {
+        console.log('Camera permission denied');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  };
+
+  const openCamera = async () => {
+    const result = await launchCamera({
+      mediaType: 'photo',
+      quality: 0.5,
+      saveToPhotos: true,
+    });
+    if (!result.didCancel) {
+      setImage({uri: result.assets[0].uri});
+    }
+  };
+
   return (
     <View style={styles.rootContainer}>
       <Image source={image} style={styles.image} />
@@ -50,7 +87,11 @@ const AddPostScreen = () => {
             <Text style={styles.textBold}>Gallery</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            requestCameraPermission();
+            console.log('camera pressed');
+          }}>
           <View style={styles.AddPostBottomInnerContainer}>
             <Text style={styles.textBold}>Camera</Text>
           </View>
