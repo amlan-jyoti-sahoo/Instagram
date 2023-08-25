@@ -5,7 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/Octicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {Provider} from 'react-redux';
+import {Provider, useSelector} from 'react-redux';
 import {store} from './store/store';
 import {PersistGate} from 'redux-persist/integration/react';
 import persistStore from 'redux-persist/es/persistStore';
@@ -32,6 +32,7 @@ function App() {
   const BottomTab = createBottomTabNavigator();
 
   function BottomTabScreens() {
+    const user = useSelector(state => state.user.userData);
     return (
       <BottomTab.Navigator
         initialRouteName={HomeScreen}
@@ -116,7 +117,7 @@ function App() {
                 }}>
                 {focused ? (
                   <Image
-                    source={require('./assets/images/Amlan.png')}
+                    source={user[0].profileImage}
                     style={{
                       height: 26,
                       width: 26,
@@ -127,7 +128,7 @@ function App() {
                   />
                 ) : (
                   <Image
-                    source={require('./assets/images/Amlan.png')}
+                    source={user[0].profileImage}
                     style={{height: 24, width: 24, borderRadius: 50}}
                   />
                 )}
