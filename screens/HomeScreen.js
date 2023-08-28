@@ -1,4 +1,10 @@
-import {Image, SafeAreaView, StyleSheet, View} from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, {useState} from 'react';
 import Octicons from 'react-native-vector-icons/Octicons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -38,7 +44,12 @@ const HomeScreen = ({navigation}) => {
             />
           </View>
           <View style={styles.upperHeaderInnerContainer}>
-            <FeatherIcon name="message-circle" size={30} color={'black'} />
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('AllChatScreen');
+              }}>
+              <FeatherIcon name="message-circle" size={30} color={'black'} />
+            </TouchableOpacity>
           </View>
         </View>
       </View>

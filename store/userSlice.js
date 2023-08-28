@@ -19,6 +19,25 @@ export const userSlice = createSlice({
       console.log(action.payload),
         (state.userData[0].profileImage = {uri: action.payload});
     },
+    addChat: (state, action) => {
+      if (state.selectedUser) {
+        const selectedUserIndex = state.userData.findIndex(
+          user => user.id === state.selectedUser.id,
+        );
+
+        if (selectedUserIndex !== -1) {
+          const newChats = {
+            sent: {message: action.payload.message, uri: action.payload.uri},
+          };
+          state.userData[selectedUserIndex].chatsHistory.push(newChats);
+        }
+      }
+
+      // console.log(action.payload);
+      // console.log('user:', state.selectedUser.userId);
+      //   console.log(userId);
+      console.log(state.userData[state.selectedUser.userId - 1].chatsHistory);
+    },
     showStory: (state, action) => {
       const tappedUserIndex = state.userData.findIndex(
         user => user.userId === action.payload,

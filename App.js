@@ -18,6 +18,13 @@ import ProfileScreen from './screens/ProfileScreen';
 import SavedPostScreen from './screens/SavedPostScreen';
 import PostScreen from './screens/PostScreen';
 
+import AllChatScreen from './screens/AllChatScreen';
+import ChatScreen from './screens/ChatScreen';
+import Icoicons from 'react-native-vector-icons/Ionicons';
+import ProfileImage from './screens/ProfileImage';
+import PhotoRender from './screens/PhotoRender';
+import ImageFullScreen from './screens/ImageFullScreen';
+
 //Screens
 
 const home = 'HomeScreen';
@@ -165,6 +172,26 @@ function App() {
               component={PostScreen}
               options={{headerTitle: 'Posts'}}
             />
+            <Stack.Screen
+              name="AllChatScreen"
+              component={AllChatScreen}
+              options={{title: 'Chats'}}
+            />
+            <Stack.Screen
+              name="ChatScreen"
+              component={ChatScreen}
+              options={{
+                headerRight: () => (
+                  <View style={styles.headerRightContainer}>
+                    <Icoicons name="videocam" size={24} color="#000000" />
+                    <Icoicons name="call" size={24} color="#000000" />
+                  </View>
+                ),
+              }}
+            />
+            <Stack.Screen name="ProfileImage" component={ProfileImage} />
+            <Stack.Screen name="PhotoRender" component={PhotoRender} />
+            <Stack.Screen name="ImageFullScreen" component={ImageFullScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </PersistGate>
