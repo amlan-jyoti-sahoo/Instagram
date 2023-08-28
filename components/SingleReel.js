@@ -130,14 +130,17 @@ const styles = StyleSheet.create({
   textBold: {
     fontWeight: 'bold',
     color: 'white',
+    fontFamily: 'Muli-Bold',
   },
   textNormal: {
     fontWeight: '500',
     color: 'white',
+    fontFamily: 'Muli-Regular',
   },
   textlight: {
-    fontWeight: '200',
+    fontWeight: '100',
     color: 'white',
+    fontFamily: 'Muli-Regular',
   },
   videoContainer: {
     height: height,

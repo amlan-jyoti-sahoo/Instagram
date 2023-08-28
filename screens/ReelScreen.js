@@ -67,5 +67,6 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
     color: 'white',
+    fontFamily: 'Muli-Bold',
   },
 });

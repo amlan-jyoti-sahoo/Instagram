@@ -86,11 +86,13 @@ const styles = StyleSheet.create({
   textBold: {
     fontWeight: 'bold',
     color: '#000000',
+    fontFamily: 'Muli-Bold',
   },
   textNormal: {
     fontWeight: '400',
     color: '#524f4f',
     fontSize: 12,
+    fontFamily: 'Muli-Regular',
   },
 
   menuModalContainer: {

@@ -184,12 +184,13 @@ const styles = StyleSheet.create({
   },
   textBold: {
     color: 'black',
-    fontWeight: '600',
+    fontFamily: 'Muli-Bold',
   },
   textNormal: {
     fontSize: 12,
     color: 'black',
     fontWeight: '400',
+    fontFamily: 'Muli-Regular',
   },
   PostRootCotainer: {
     marginBottom: 10,

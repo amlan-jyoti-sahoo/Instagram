@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
   textBold: {
     color: 'black',
     fontWeight: '600',
+    fontFamily: 'Muli Bold',
   },
   textNormal: {
     fontSize: 12,

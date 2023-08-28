@@ -108,12 +108,13 @@ const styles = StyleSheet.create({
   textBold: {
     fontSize: 14,
     color: 'black',
-    fontWeight: '600',
+    fontFamily: 'Muli-Bold',
   },
   textNormal: {
     fontSize: 14,
     color: 'black',
     fontWeight: '400',
+    fontFamily: 'Muli-Regular',
   },
   upperHeaderContainer: {
     height: 50,

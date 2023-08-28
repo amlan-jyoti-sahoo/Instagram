@@ -146,12 +146,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: 'black',
     fontWeight: '600',
+    fontFamily: 'Muli-Bold',
   },
   textNormal: {
     fontSize: 14,
     color: 'black',
     fontWeight: '400',
     marginLeft: 10,
+    fontFamily: 'Muli-Regular',
   },
   menuContainer: {
     marginTop: 10,
