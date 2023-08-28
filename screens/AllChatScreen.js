@@ -16,6 +16,7 @@ import {UserData} from '../data/userData';
 
 function AllChatScreen({navigation}) {
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user.userData);
 
   const [filteredData, setfilteredData] = useState([]);
   const [search, setSearch] = useState('');
@@ -27,7 +28,7 @@ function AllChatScreen({navigation}) {
 
   const fetchName = () => {
     if (search == '') {
-      setfilteredData(UserData);
+      setfilteredData(user);
     }
   };
 

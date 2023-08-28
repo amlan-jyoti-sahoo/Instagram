@@ -15,23 +15,19 @@ export const UserData = [
     profileImage: AmlanImg,
     chatsHistory: [
       {
-        sent: {message: 'hi, Elon bhai all Good', uri: ''},
-        recieve: {message: 'Haan bro, badhiya bro', uri: ''},
+        sent: {message: 'hi', uri: ''},
+        recieve: {message: 'Hlw', uri: ''},
       },
       {
-        sent: {message: 'Aur next rocket kab lauch kar rahe ho!', uri: ''},
-        recieve: {message: 'ek week mein bro..', uri: ''},
+        sent: {message: 'You done your project', uri: ''},
+        recieve: {message: "Yeah it's over", uri: ''},
       },
       {
         sent: {
-          message: 'yaar, mereko bhi jana tha International space station mein',
+          message: 'Do you implement that new feature',
           uri: '',
         },
-        recieve: {message: 'Thik hai, come to us bro', uri: ''},
-      },
-      {
-        sent: {message: 'Pakka bhejo to', uri: ''},
-        recieve: {message: 'Haan bro trust me', uri: ''},
+        recieve: {message: 'Yeah I am currently working on it!!', uri: ''},
       },
     ],
     hasStatus: true,
@@ -42,23 +38,19 @@ export const UserData = [
     profileImage: ShubhamImg,
     chatsHistory: [
       {
-        sent: {message: 'hi, Elon bhai all Good', uri: ''},
-        recieve: {message: 'Haan bro, badhiya bro', uri: ''},
+        sent: {message: 'hi', uri: ''},
+        recieve: {message: 'Hlw', uri: ''},
       },
       {
-        sent: {message: 'Aur next rocket kab lauch kar rahe ho!', uri: ''},
-        recieve: {message: 'ek week mein bro..', uri: ''},
+        sent: {message: 'You done your project', uri: ''},
+        recieve: {message: "Yeah it's over", uri: ''},
       },
       {
         sent: {
-          message: 'yaar, mereko bhi jana tha International space station mein',
+          message: 'Do you implement that new feature',
           uri: '',
         },
-        recieve: {message: 'Thik hai, come to us bro', uri: ''},
-      },
-      {
-        sent: {message: 'Pakka bhejo to', uri: ''},
-        recieve: {message: 'Haan bro trust me', uri: ''},
+        recieve: {message: 'Yeah I am currently working on it!!', uri: ''},
       },
     ],
     hasStatus: true,
@@ -69,23 +61,19 @@ export const UserData = [
     profileImage: AdityaImg,
     chatsHistory: [
       {
-        sent: {message: 'hi, Elon bhai all Good', uri: ''},
-        recieve: {message: 'Haan bro, badhiya bro', uri: ''},
+        sent: {message: 'hi', uri: ''},
+        recieve: {message: 'Hlw', uri: ''},
       },
       {
-        sent: {message: 'Aur next rocket kab lauch kar rahe ho!', uri: ''},
-        recieve: {message: 'ek week mein bro..', uri: ''},
+        sent: {message: 'You done your project', uri: ''},
+        recieve: {message: "Yeah it's over", uri: ''},
       },
       {
         sent: {
-          message: 'yaar, mereko bhi jana tha International space station mein',
+          message: 'Do you implement that new feature',
           uri: '',
         },
-        recieve: {message: 'Thik hai, come to us bro', uri: ''},
-      },
-      {
-        sent: {message: 'Pakka bhejo to', uri: ''},
-        recieve: {message: 'Haan bro trust me', uri: ''},
+        recieve: {message: 'Yeah I am currently working on it!!', uri: ''},
       },
     ],
     hasStatus: true,
@@ -96,23 +84,19 @@ export const UserData = [
     profileImage: PratikshaImg,
     chatsHistory: [
       {
-        sent: {message: 'hi, Elon bhai all Good', uri: ''},
-        recieve: {message: 'Haan bro, badhiya bro', uri: ''},
+        sent: {message: 'hi', uri: ''},
+        recieve: {message: 'Hlw', uri: ''},
       },
       {
-        sent: {message: 'Aur next rocket kab lauch kar rahe ho!', uri: ''},
-        recieve: {message: 'ek week mein bro..', uri: ''},
+        sent: {message: 'You done your project', uri: ''},
+        recieve: {message: "Yeah it's over", uri: ''},
       },
       {
         sent: {
-          message: 'yaar, mereko bhi jana tha International space station mein',
+          message: 'Do you implement that new feature',
           uri: '',
         },
-        recieve: {message: 'Thik hai, come to us bro', uri: ''},
-      },
-      {
-        sent: {message: 'Pakka bhejo to', uri: ''},
-        recieve: {message: 'Haan bro trust me', uri: ''},
+        recieve: {message: 'Yeah I am currently working on it!!', uri: ''},
       },
     ],
     hasStatus: false,
@@ -123,23 +107,19 @@ export const UserData = [
     profileImage: AdyasarImg,
     chatsHistory: [
       {
-        sent: {message: 'hi, Elon bhai all Good', uri: ''},
-        recieve: {message: 'Haan bro, badhiya bro', uri: ''},
+        sent: {message: 'hi', uri: ''},
+        recieve: {message: 'Hlw', uri: ''},
       },
       {
-        sent: {message: 'Aur next rocket kab lauch kar rahe ho!', uri: ''},
-        recieve: {message: 'ek week mein bro..', uri: ''},
+        sent: {message: 'You done your project', uri: ''},
+        recieve: {message: "Yeah it's over", uri: ''},
       },
       {
         sent: {
-          message: 'yaar, mereko bhi jana tha International space station mein',
+          message: 'Do you implement that new feature',
           uri: '',
         },
-        recieve: {message: 'Thik hai, come to us bro', uri: ''},
-      },
-      {
-        sent: {message: 'Pakka bhejo to', uri: ''},
-        recieve: {message: 'Haan bro trust me', uri: ''},
+        recieve: {message: 'Yeah I am currently working on it!!', uri: ''},
       },
     ],
     hasStatus: false,
@@ -150,23 +130,19 @@ export const UserData = [
     profileImage: GauriImg,
     chatsHistory: [
       {
-        sent: {message: 'hi, Elon bhai all Good', uri: ''},
-        recieve: {message: 'Haan bro, badhiya bro', uri: ''},
+        sent: {message: 'hi', uri: ''},
+        recieve: {message: 'Hlw', uri: ''},
       },
       {
-        sent: {message: 'Aur next rocket kab lauch kar rahe ho!', uri: ''},
-        recieve: {message: 'ek week mein bro..', uri: ''},
+        sent: {message: 'You done your project', uri: ''},
+        recieve: {message: "Yeah it's over", uri: ''},
       },
       {
         sent: {
-          message: 'yaar, mereko bhi jana tha International space station mein',
+          message: 'Do you implement that new feature',
           uri: '',
         },
-        recieve: {message: 'Thik hai, come to us bro', uri: ''},
-      },
-      {
-        sent: {message: 'Pakka bhejo to', uri: ''},
-        recieve: {message: 'Haan bro trust me', uri: ''},
+        recieve: {message: 'Yeah I am currently working on it!!', uri: ''},
       },
     ],
     hasStatus: true,
@@ -177,23 +153,19 @@ export const UserData = [
     profileImage: PrakharImg,
     chatsHistory: [
       {
-        sent: {message: 'hi, Elon bhai all Good', uri: ''},
-        recieve: {message: 'Haan bro, badhiya bro', uri: ''},
+        sent: {message: 'hi', uri: ''},
+        recieve: {message: 'Hlw', uri: ''},
       },
       {
-        sent: {message: 'Aur next rocket kab lauch kar rahe ho!', uri: ''},
-        recieve: {message: 'ek week mein bro..', uri: ''},
+        sent: {message: 'You done your project', uri: ''},
+        recieve: {message: "Yeah it's over", uri: ''},
       },
       {
         sent: {
-          message: 'yaar, mereko bhi jana tha International space station mein',
+          message: 'Do you implement that new feature',
           uri: '',
         },
-        recieve: {message: 'Thik hai, come to us bro', uri: ''},
-      },
-      {
-        sent: {message: 'Pakka bhejo to', uri: ''},
-        recieve: {message: 'Haan bro trust me', uri: ''},
+        recieve: {message: 'Yeah I am currently working on it!!', uri: ''},
       },
     ],
     hasStatus: false,
@@ -204,23 +176,19 @@ export const UserData = [
     profileImage: RishabhImg,
     chatsHistory: [
       {
-        sent: {message: 'hi, Elon bhai all Good', uri: ''},
-        recieve: {message: 'Haan bro, badhiya bro', uri: ''},
+        sent: {message: 'hi', uri: ''},
+        recieve: {message: 'Hlw', uri: ''},
       },
       {
-        sent: {message: 'Aur next rocket kab lauch kar rahe ho!', uri: ''},
-        recieve: {message: 'ek week mein bro..', uri: ''},
+        sent: {message: 'You done your project', uri: ''},
+        recieve: {message: "Yeah it's over", uri: ''},
       },
       {
         sent: {
-          message: 'yaar, mereko bhi jana tha International space station mein',
+          message: 'Do you implement that new feature',
           uri: '',
         },
-        recieve: {message: 'Thik hai, come to us bro', uri: ''},
-      },
-      {
-        sent: {message: 'Pakka bhejo to', uri: ''},
-        recieve: {message: 'Haan bro trust me', uri: ''},
+        recieve: {message: 'Yeah I am currently working on it!!', uri: ''},
       },
     ],
     hasStatus: true,
@@ -231,23 +199,19 @@ export const UserData = [
     profileImage: PreetiImg,
     chatsHistory: [
       {
-        sent: {message: 'hi, Elon bhai all Good', uri: ''},
-        recieve: {message: 'Haan bro, badhiya bro', uri: ''},
+        sent: {message: 'hi', uri: ''},
+        recieve: {message: 'Hlw', uri: ''},
       },
       {
-        sent: {message: 'Aur next rocket kab lauch kar rahe ho!', uri: ''},
-        recieve: {message: 'ek week mein bro..', uri: ''},
+        sent: {message: 'You done your project', uri: ''},
+        recieve: {message: "Yeah it's over", uri: ''},
       },
       {
         sent: {
-          message: 'yaar, mereko bhi jana tha International space station mein',
+          message: 'Do you implement that new feature',
           uri: '',
         },
-        recieve: {message: 'Thik hai, come to us bro', uri: ''},
-      },
-      {
-        sent: {message: 'Pakka bhejo to', uri: ''},
-        recieve: {message: 'Haan bro trust me', uri: ''},
+        recieve: {message: 'Yeah I am currently working on it!!', uri: ''},
       },
     ],
     hasStatus: false,

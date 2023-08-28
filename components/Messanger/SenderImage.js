@@ -1,5 +1,6 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
+import AmlanImg from '../../assets/images/Amlan.png';
 import {useNavigation} from '@react-navigation/native';
 
 function SenderImage({imageUri, message}) {
@@ -10,10 +11,7 @@ function SenderImage({imageUri, message}) {
           <Image source={{uri: imageUri}} style={styles.imageChat} />
           <Text style={styles.chatText}>{message}</Text>
         </View>
-        {/* <Image
-          source={require('../../assets/images/Amlan.jpeg')}
-          style={styles.chatImage}
-        /> */}
+        <Image source={AmlanImg} style={styles.chatImage} />
       </View>
     </View>
   );

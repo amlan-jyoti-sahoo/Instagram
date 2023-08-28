@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
-
+import AmlanImg from '../../assets/images/Amlan.png';
 function SenderChat({message}) {
   return (
     <View style={styles.chatsContainer}>
@@ -8,10 +8,7 @@ function SenderChat({message}) {
         <View style={styles.chat}>
           <Text style={styles.chatText}>{message}</Text>
         </View>
-        {/* <Image
-          source={require('../../assets/images/amlan.jpeg')}
-          style={styles.chatImage}
-        /> */}
+        <Image source={AmlanImg} style={styles.chatImage} />
       </View>
     </View>
   );
