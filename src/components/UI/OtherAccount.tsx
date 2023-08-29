@@ -4,7 +4,7 @@ import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const OtherAccount = ({image, name, icon, color}) => {
+const OtherAccount = ({image, name, icon, color}: {image: any, name : string, icon : string, color :string}) => {
   return (
     <View style={styles.accountContainer}>
       <View style={styles.accountInnerLeftContainer}>
