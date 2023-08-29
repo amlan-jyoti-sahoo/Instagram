@@ -11,10 +11,12 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import PostRender from '../PostRender';
 import ReelRender from '../ReelRender';
 import TagPostRender from '../TagPostRender';
+import { PostDataItem } from '../../data/postData';
+import { ReelDataItem } from '../../data/reelData';
 
-const PostDataContainer = ({filteredPost, filteredReel}) => {
+const PostDataContainer = ({filteredPost, filteredReel}: {filteredPost : PostDataItem, filteredReel: ReelDataItem}) => {
   const [tabNo, setTabNo] = useState(1);
-  function PostReelRenderHandler(tabNo) {
+  function PostReelRenderHandler(tabNo: number) {
     setTabNo(tabNo);
   }
 

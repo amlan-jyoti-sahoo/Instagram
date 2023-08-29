@@ -8,7 +8,26 @@ import PrakharImg from '../assets/images/Prakhar.png';
 import RishabhImg from '../assets/images/Rishabh.png';
 import PreetiImg from '../assets/images/Preeti.png';
 
-export const UserData = [
+
+export interface Message {
+  message: string;
+  uri: string;
+}
+
+export interface ChatHistoryItem {
+  sent: Message;
+  recieve: Message;
+}
+
+export interface UserDataItem {
+  userId: number;
+  userName: string;
+  profileImage: string; // Assuming AmlanImg is a string
+  chatsHistory: ChatHistoryItem[];
+  hasStatus: boolean;
+}
+
+export const UserData: UserDataItem[] = [
   {
     userId: 1,
     userName: 'Amlanjyoti Sahoo',

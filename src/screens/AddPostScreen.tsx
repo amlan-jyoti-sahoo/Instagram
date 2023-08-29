@@ -13,14 +13,20 @@ import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {useDispatch, useSelector} from 'react-redux';
 import {postSlice} from '../store/postSlice';
 import Toast from 'react-native-simple-toast';
-const AddPostScreen = () => {
+import { RootState } from '../store/store';
+
+const AddPostScreen : React.FC = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user.userData);
-  const post = useSelector(state => state.post.postData);
+  const user = useSelector((state : RootState) => state.user.userData);
+  const post = useSelector((state : RootState)  => state.post.postData);
 
   const [image, setImage] = useState(UploadImage);
 
   const ImagePicker = async () => {
+    interface ImageLibraryOptions {
+      path?: string; // Add this line to include the 'path' property
+    }
+  
     try {
       let options = {
         storageOptions: {
@@ -28,7 +34,9 @@ const AddPostScreen = () => {
         },
       };
       const result = await launchImageLibrary(options);
-      setImage({uri: result.assets[0].uri});
+      if (result && !result.didCancel && result.assets && result.assets.length > 0) {
+        setImage({ uri: result.assets[0].uri });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -38,7 +46,7 @@ const AddPostScreen = () => {
     setImage(UploadImage);
     Toast.showWithGravity('Successfully saved to Posts', Toast.LONG, Toast.TOP);
   };
-  const cancelPressHandler = text => {
+  const cancelPressHandler = () => {
     setImage(UploadImage);
   };
 
@@ -73,8 +81,9 @@ const AddPostScreen = () => {
       quality: 0.5,
       saveToPhotos: true,
     });
-    if (!result.didCancel) {
-      setImage({uri: result.assets[0].uri});
+    
+    if (result && !result.didCancel && result.assets && result.assets.length > 0) {
+      setImage({ uri: result.assets[0].uri });
     }
   };
 

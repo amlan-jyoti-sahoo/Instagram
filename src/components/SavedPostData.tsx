@@ -12,12 +12,15 @@ import PostRender from './PostRender';
 import ReelRender from './ReelRender';
 import TagPostRender from './TagPostRender';
 import {useDispatch, useSelector} from 'react-redux';
-const SavedPostData = ({filteredPost}) => {
-  const reel = useSelector(state => state.reel.reelData);
-  const filteredReel = reel.filter(item => item.reel.isBookmarked === true);
+import { PostDataItem } from '../data/postData';
+import { RootState } from '../store/store';
+import { ReelDataItem } from '../data/reelData';
+const SavedPostData = ({filteredPost}: {filteredPost : PostDataItem}) => {
+  const reel = useSelector((state: RootState) => state.reel.reelData);
+  const filteredReel = reel.filter((item: ReelDataItem) => item.reel.isBookmarked === true);
 
   const [tabNo, setTabNo] = useState(1);
-  function PostReelRenderHandler(tabNo) {
+  function PostReelRenderHandler(tabNo: number) {
     setTabNo(tabNo);
     console.log(tabNo);
   }

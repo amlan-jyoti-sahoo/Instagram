@@ -11,10 +11,12 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 
 import Video from 'react-native-video';
-const ReelRender = ({filteredReel}) => {
+import { ReelDataItem } from '../data/reelData';
+
+const ReelRender = ({filteredReel}: {filteredReel: ReelDataItem}) => {
   const navigation = useNavigation();
 
-  function postPressHandler(postId) {
+  function postPressHandler(postId: number) {
     console.log('hello');
     navigation.navigate('PostScreen', {
       postId: postId,
@@ -22,8 +24,8 @@ const ReelRender = ({filteredReel}) => {
     });
   }
 
-  const renderPosts = ({item}) => {
-    function postPressHandler(reelId) {
+  const renderPosts = ({item}:{item : ReelDataItem}) => {
+    function postPressHandler(reelId: number) {
       navigation.navigate('ReelScreen', {
         reelId: reelId,
       });
@@ -51,6 +53,7 @@ const ReelRender = ({filteredReel}) => {
         scrollEnabled={true}
         data={filteredReel}
         renderItem={renderPosts}
+        keyExtractor={item=> item.reelId.toString()}
       />
     </View>
   );

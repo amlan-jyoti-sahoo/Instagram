@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {reelData} from '../data/reelData';
+import {reelData, ReelDataItem} from '../data/reelData';
+import { RootState } from './store';
 
 const initialState = {
   reelData: reelData,
@@ -10,9 +11,9 @@ export const reelSlice = createSlice({
   name: 'reel',
   initialState,
   reducers: {
-    setSelectedReel: (state, action) => {
+    setSelectedReel: (state: RootState, action) => {
       state.selectedReel = state.reelData.find(
-        item => item.reelId === action.payload,
+        (item: ReelDataItem) => item.reelId === action.payload,
       );
     },
     setLike: (state, action) => {

@@ -8,10 +8,13 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-const PostRender = ({filteredPost}) => {
+import { PostDataItem } from '../data/postData';
+
+
+const PostRender = ({filteredPost} : {filteredPost:PostDataItem}) => {
   const navigation = useNavigation();
-  const renderPosts = ({item}) => {
-    function postPressHandler(postId) {
+  const renderPosts = ({item}: {item:PostDataItem}) => {
+    function postPressHandler(postId: number) {
       console.log('hello');
       navigation.navigate('PostScreen', {
         postId: postId,
@@ -34,6 +37,7 @@ const PostRender = ({filteredPost}) => {
         scrollEnabled={true}
         data={filteredPost}
         renderItem={renderPosts}
+        keyExtractor={item => item.postId}
       />
     </View>
   );

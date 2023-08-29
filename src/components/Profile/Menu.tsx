@@ -6,7 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
 
-const Menu = ({savedMenuPressHandler}) => {
+const Menu = ({savedMenuPressHandler}: {savedMenuPressHandler : Function}) => {
   return (
     <View style={styles.menuModalContainer}>
       <View style={styles.knobContainer}>

@@ -21,11 +21,13 @@ const persistConfig = {
   storage: AsyncStorage,
 };
 
-let rootReducer = combineReducers({
+let rootReducer: any = combineReducers({
   user: userSlice.reducer,
   post: postSlice.reducer,
   reel: reelSlice.reducer,
 });
+
+export type RootState = ReturnType<typeof rootReducer>;
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

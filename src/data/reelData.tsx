@@ -1,4 +1,17 @@
-export const reelData = [
+export interface Reel {
+  video: number; // Assuming require returns a number
+  likes: number;
+  isLiked: boolean;
+  isBookmarked: boolean;
+}
+
+export interface ReelDataItem {
+  userId: number;
+  reelId: number;
+  reel: Reel;
+}
+
+export const reelData: ReelDataItem[] = [
   {
     userId: 1,
     reelId: 1,

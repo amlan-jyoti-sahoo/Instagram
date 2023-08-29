@@ -6,7 +6,29 @@ import SnowMountain from '../assets/images/SnowMountain.jpeg';
 import valley from '../assets/images/valley.jpeg';
 import valley2 from '../assets/images/valley2.jpeg';
 
-export const PostData = [
+export interface Comment {
+  commentId: number;
+  userId: number;
+  comment: string;
+  likes: number;
+  isLiked: boolean;
+}
+
+export interface Post {
+  postImage: string; // Assuming Mountain is a string
+  likes: number;
+  isLiked: boolean;
+  isBookmarked: boolean;
+  comments: Comment[];
+}
+
+export interface PostDataItem {
+  userId: number;
+  postId: number;
+  post: Post;
+}
+
+export const PostData: PostDataItem[]  = [
   {
     userId: 2,
     postId: 1,

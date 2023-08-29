@@ -19,18 +19,21 @@ import {userSlice} from '../../store/userSlice';
 import PostEllipsisMenu from './PostEllipsisMenu';
 import CommentRender from '../CommentRender';
 
-const Posts = ({data, postId}) => {
+const Posts = ({data, postId}: {data : any, postId : any}) => {
   const dispatch = useDispatch();
 
-  const user = useSelector(state => state.user.userData);
-  const selectedPost = useSelector(state => state.post.selectedPost);
+  const user = useSelector((state : any) => state.user.userData);
+  const selectedPost = useSelector((state : any) => state.post.selectedPost);
 
   const [ellipsisMenuModal, setEllipsisMenuModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
 
-  const flatListRef = useRef(null);
+  interface postItem {
+    postId: string; 
+  }
+  const flatListRef = useRef<FlatList<postItem>>(null);
   useEffect(() => {
-    const index = data.findIndex(item => item.postId === postId);
+    const index = data.findIndex((item: any) => item.postId === postId);
 
     if (index !== -1 && flatListRef.current) {
       flatListRef.current.scrollToIndex({index});
@@ -44,11 +47,11 @@ const Posts = ({data, postId}) => {
     setCommentModal(!commentModal);
   };
 
-  const renderPosts = ({item}) => {
+  const renderPosts = ({item}: {item : any}) => {
     function ProfilePressHandler() {
       dispatch(userSlice.actions.showStory(item.userId));
     }
-    const postUserIndex = user.findIndex(user => user.userId === item.userId);
+    const postUserIndex = user.findIndex((user : any) => user.userId === item.userId);
     const postUser = user[postUserIndex];
     function likePressHandler() {
       dispatch(postSlice.actions.setLike(item.postId));

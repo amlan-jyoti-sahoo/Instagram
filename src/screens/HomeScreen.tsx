@@ -14,8 +14,8 @@ import ProfileStatus from '../components/Home/ProfileStatus';
 import Posts from '../components/Home/Posts';
 import {useSelector} from 'react-redux';
 
-const HomeScreen = ({navigation}) => {
-  const post = useSelector(state => state.post.postData);
+const HomeScreen = ({navigation}: {navigation: any}) => {
+  const post = useSelector((state: any) => state.post.postData);
   return (
     <SafeAreaView style={styles.rootContainer}>
       {/* Upper Header Container */}
@@ -58,7 +58,7 @@ const HomeScreen = ({navigation}) => {
       <ProfileStatus />
 
       {/*All Post Container */}
-      <Posts data={post} />
+      <Posts data={post} postId={1}/>
     </SafeAreaView>
   );
 };

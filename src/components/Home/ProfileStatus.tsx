@@ -12,9 +12,9 @@ import {userSlice} from '../../store/userSlice';
 
 const ProfileStatus = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user.userData);
+  const user = useSelector((state: any) => state.user.userData);
 
-  const renderprofileStatus = ({item}) => {
+  const renderprofileStatus = ({item}: {item : any}) => {
     function ProfilePressHandler() {
       dispatch(userSlice.actions.showStory(item.userId));
     }

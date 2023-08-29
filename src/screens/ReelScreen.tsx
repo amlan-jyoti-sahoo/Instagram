@@ -5,17 +5,22 @@ import SingleReel from '../components/SingleReel';
 import {useDispatch, useSelector} from 'react-redux';
 import {postSlice} from '../store/postSlice';
 import {userSlice} from '../store/userSlice';
+import { RootState } from '../store/store';
+import { ReelDataItem } from '../data/reelData';
 
-const ReelScreen = ({route}) => {
+
+
+const ReelScreen=  ({route}:{route: any}) => {
   const {reelId} = route.params;
-  const reel = useSelector(state => state.reel.reelData);
+  const reel = useSelector((state : RootState) => state.reel.reelData);
 
-  const renderItem = item => {
-    return <SingleReel item={item} />;
+  const renderItem = ({item, index}:{item: ReelDataItem, index: number}) => {
+    return <SingleReel item={item} currentIndex={1} index={index}/>;
   };
-  const flatListRef = useRef(null);
+ 
+  const flatListRef = useRef<FlatList<ReelDataItem>>(null);
   useEffect(() => {
-    const index = reel.findIndex(item => item.reelId === reelId);
+    const index = reel.findIndex((item : ReelDataItem) => item.reelId === reelId);
 
     if (index !== -1 && flatListRef.current) {
       flatListRef.current.scrollToIndex({index});
@@ -40,7 +45,7 @@ const ReelScreen = ({route}) => {
             });
           });
         }}
-        renderItem={({item}) => renderItem(item)}
+        renderItem={renderItem}
       />
     </View>
   );

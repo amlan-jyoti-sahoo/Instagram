@@ -13,18 +13,20 @@ import {useDispatch, useSelector} from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {postSlice} from '../store/postSlice';
 import SingleComment from './SingleComment';
+import { PostDataItem } from '../data/postData';
+import { RootState } from '../store/store';
 
-const CommentRender = ({selectedPost}) => {
+const CommentRender = ({selectedPost}: {selectedPost : PostDataItem}) => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user.userData);
-  const post = useSelector(state => state.post.postData);
+  const user = useSelector((state: RootState) => state.user.userData);
+  const post = useSelector((state: RootState) => state.post.postData);
 
   const [inputText, setInputText] = useState('');
-  const handleInputChange = text => {
+  const handleInputChange = (text: string) => {
     setInputText(text);
   };
   const selectedPostIndex = post.findIndex(
-    item => item.postId === selectedPost.postId,
+    (item: PostDataItem) => item.postId === selectedPost.postId,
   );
   const [allComments, setAllComments] = useState(
     post[selectedPostIndex].post.comments,
@@ -49,7 +51,7 @@ const CommentRender = ({selectedPost}) => {
     setInputText('');
   }
 
-  const renderItem = ({item}) => {
+  const renderItem = ({item}:{item: PostDataItem}) => {
     return <SingleComment item={item} selectedPost={selectedPost} />;
   };
   return (

@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {PostData} from '../data/postData';
+import {PostData,PostDataItem} from '../data/postData';
+import { RootState } from './store';
 
 const initialState = {
   postData: PostData,
@@ -10,9 +11,9 @@ export const postSlice = createSlice({
   name: 'post',
   initialState,
   reducers: {
-    setSelectedPost: (state, action) => {
+    setSelectedPost: (state: RootState, action) => {
       state.selectedPost = state.postData.find(
-        item => item.postId === action.payload,
+        (item: PostDataItem) => item.postId === action.payload,
       );
     },
     setLike: (state, action) => {

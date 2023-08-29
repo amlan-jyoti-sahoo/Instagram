@@ -17,11 +17,14 @@ import StoryHighlightContainer from '../components/Profile/StoryHighlightContain
 import ProfileData from '../components/Profile/ProfileData';
 import PostDataContainer from '../components/Profile/PostDataContainer';
 import Menu from '../components/Profile/Menu';
+import { RootState } from '../store/store';
+import { PostDataItem } from '../data/postData';
+import { ReelDataItem } from '../data/reelData';
 
-const ProfileScreen = ({navigation}) => {
-  const user = useSelector(state => state.user.userData);
-  const post = useSelector(state => state.post.postData);
-  const reel = useSelector(state => state.reel.reelData);
+const ProfileScreen = ({navigation}: {navigation: any}) => {
+  const user = useSelector((state: RootState) => state.user.userData);
+  const post = useSelector((state: RootState) => state.post.postData);
+  const reel = useSelector((state: RootState) => state.reel.reelData);
   const [multiAccountsModal, setMultiAccountsModal] = useState(false);
   const [menuModal, setMenuModal] = useState(false);
 
@@ -38,8 +41,8 @@ const ProfileScreen = ({navigation}) => {
     navigation.navigate('SavedPostScreen');
   };
 
-  const filteredPost = post.filter(item => item.userId === 1);
-  const filteredReel = reel.filter(item => item.userId === 1);
+  const filteredPost = post.filter((item : PostDataItem) => item.userId === 1);
+  const filteredReel = reel.filter((item: ReelDataItem) => item.userId === 1);
 
   return (
     <SafeAreaView style={styles.rootContainer}>

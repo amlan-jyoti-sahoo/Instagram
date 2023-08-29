@@ -11,12 +11,15 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {postSlice} from '../store/postSlice';
-const SingleComment = ({item, selectedPost}) => {
+import { PostDataItem } from '../data/postData';
+import { RootState } from '../store/store';
+import { UserDataItem } from '../data/userData';
+const SingleComment = ({item, selectedPost}: {item: PostDataItem, selectedPost: PostDataItem}) => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user.userData);
-  const post = useSelector(state => state.post.postData);
+  const user = useSelector((state: RootState) => state.user.userData);
+  const post = useSelector((state: RootState) => state.post.postData);
 
-  const selectedUserIndex = user.findIndex(user => user.userId === item.userId);
+  const selectedUserIndex = user.findIndex((user: UserDataItem) => user.userId === item.userId);
   const [likes, setLikes] = useState(item.likes);
   const [isLiked, setIsLiked] = useState(item.isLiked);
 

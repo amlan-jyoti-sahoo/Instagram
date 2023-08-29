@@ -5,11 +5,14 @@ import {launchImageLibrary} from 'react-native-image-picker';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {userSlice} from '../../store/userSlice';
+import { PostDataItem } from '../../data/postData';
+import { RootState } from '../../store/store';
 
-const ProfileData = ({filteredPost}) => {
+
+const ProfileData = ({filteredPost}: {filteredPost : PostDataItem}) => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user.userData);
-  const [selectImage, setselectImage] = useState('');
+  const user = useSelector((state: RootState) => state.user.userData);
+  const [selectImage, setselectImage] = useState();
 
   const ImagePicker = async () => {
     try {
@@ -19,8 +22,11 @@ const ProfileData = ({filteredPost}) => {
         },
       };
       const result = await launchImageLibrary(options);
-      setselectImage(result.assets[0].uri);
-      dispatch(userSlice.actions.setProfilePhoto(result.assets[0].uri));
+      if (result && !result.didCancel && result.assets && result.assets.length > 0) {
+
+        setselectImage({ uri: result.assets[0].uri });
+        dispatch(userSlice.actions.setProfilePhoto(result.assets[0].uri));
+      }
     } catch (error) {
       console.log(error);
     }

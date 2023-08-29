@@ -14,8 +14,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {useDispatch, useSelector} from 'react-redux';
 import {userSlice} from '../store/userSlice';
 import {reelSlice} from '../store/reelSlice';
+import { ReelDataItem } from '../data/reelData';
 
-const SingleReel = ({item, index, currentIndex}) => {
+const SingleReel = ({item}: {item: ReelDataItem}) => {
   const dispatch = useDispatch();
 
   function likePressHandler() {
@@ -28,10 +29,10 @@ const SingleReel = ({item, index, currentIndex}) => {
 
   const videoRef = useRef(null);
 
-  const onBuffer = buffer => {
+  const onBuffer = (buffer: string) => {
     console.log('video is Buffering', buffer);
   };
-  const onError = error => {
+  const onError = (error: string) => {
     console.log('video Error', error);
   };
   return (

@@ -9,8 +9,13 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import {useDispatch, useSelector} from 'react-redux';
 import {postSlice} from '../../store/postSlice';
 import {userSlice} from '../../store/userSlice';
+import { PostDataItem } from '../../data/postData';
 
-const PostEllipsisMenu = ({selectedPost}) => {
+interface PostEllipsisMenuProps {
+  selectedPost: PostDataItem;
+}
+
+const PostEllipsisMenu: React.FC<PostEllipsisMenuProps> = ({selectedPost}) => {
   const dispatch = useDispatch();
   const [isBookmarked, setIsBookmarked] = useState(
     selectedPost.post.isBookmarked,
