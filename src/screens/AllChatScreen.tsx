@@ -12,11 +12,12 @@ import ChatCard from '../components/Messanger/ChatCard';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {userSlice} from '../store/userSlice';
-import {UserData} from '../data/userData';
+import {UserData, UserDataItem} from '../data/userData';
+import { RootState } from '../store/store';
 
-function AllChatScreen({navigation}) {
+function AllChatScreen({navigation}: {navigation: any}) {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user.userData);
+  const user = useSelector((state: RootState) => state.user.userData);
 
   const [filteredData, setfilteredData] = useState([]);
   const [search, setSearch] = useState('');
@@ -32,7 +33,7 @@ function AllChatScreen({navigation}) {
     }
   };
 
-  const searchFilter = text => {
+  const searchFilter = (text: string) => {
     if (text) {
       const newData = UserData.filter(item => {
         const itemData = item.userName
@@ -50,7 +51,7 @@ function AllChatScreen({navigation}) {
     }
   };
 
-  const renderItem = ({item}) => {
+  const renderItem = ({item}: {item: UserDataItem}) => {
     function ProfilePressHandler() {
       dispatch(userSlice.actions.setSelectedUser(item.userId));
       navigation.navigate('ChatScreen');
@@ -70,7 +71,7 @@ function AllChatScreen({navigation}) {
     );
   };
 
-  const renderBottomHandler = ({item}) => {
+  const renderBottomHandler = ({item}:{item : UserDataItem}) => {
     return <ChatCard item={item} />;
   };
 
@@ -91,7 +92,7 @@ function AllChatScreen({navigation}) {
         <FlatList
           data={filteredData}
           renderItem={renderItem}
-          keyExtractor={item => item.userId}
+          keyExtractor={item => item.userId.toString()}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
         />
@@ -101,7 +102,7 @@ function AllChatScreen({navigation}) {
         <FlatList
           data={filteredData}
           renderItem={renderBottomHandler}
-          keyExtractor={item => item.userId}
+          keyExtractor={item => item.userId.toString()}
           showsVerticalScrollIndicator={false}
         />
       </View>

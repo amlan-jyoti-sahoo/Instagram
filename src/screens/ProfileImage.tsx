@@ -2,9 +2,10 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import React, {useLayoutEffect} from 'react';
 
 import {useDispatch, useSelector} from 'react-redux';
+import { RootState } from '../store/store';
 
-function ProfileImage({navigation}) {
-  const user = useSelector(state => state.user.selectedUser);
+function ProfileImage({navigation}: {navigation : any}) {
+  const user = useSelector((state: RootState) => state.user.selectedUser);
 
   useLayoutEffect(() => {
     navigation.setOptions({

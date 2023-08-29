@@ -18,10 +18,12 @@ import IconButton from '../components/Messanger/IconButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {userSlice} from '../store/userSlice';
 import PhotoRender from './PhotoRender';
+import { RootState } from '../store/store';
+import { ChatHistoryItem } from '../data/userData';
 
-function ChatScreen({navigation}) {
+function ChatScreen({navigation}: {navigation: any}) {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user.selectedUser);
+  const user = useSelector((state: RootState) => state.user.selectedUser);
 
   // console.log(user.userName);
   // const {item} = route.params;
@@ -110,7 +112,7 @@ function ChatScreen({navigation}) {
     });
   }, []);
 
-  function renderChats({item}) {
+  function renderChats({item}: {item: ChatHistoryItem}) {
     return (
       <>
         {item.sent.uri !== '' ? (
@@ -128,7 +130,7 @@ function ChatScreen({navigation}) {
     );
   }
 
-  function messageInputHandler(text) {
+  function messageInputHandler(text : string) {
     setMessage(text);
   }
 

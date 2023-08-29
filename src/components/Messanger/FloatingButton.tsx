@@ -2,7 +2,7 @@ import React from 'react';
 import {TouchableOpacity, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const FloatingButton = ({onPress}) => {
+const FloatingButton = ({onPress}: {onPress: any}) => {
   return (
     <TouchableOpacity style={styles.floatingButton} onPress={onPress}>
       <Text style={styles.buttonText}>Send</Text>

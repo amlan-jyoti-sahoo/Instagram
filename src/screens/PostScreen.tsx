@@ -3,7 +3,7 @@ import React from 'react';
 import Posts from '../components/Home/Posts';
 import {useSelector} from 'react-redux';
 
-const PostScreen = ({route}) => {
+const PostScreen = ({route}:{route: any}) => {
   // const post = useSelector(state => state.post.postData);
   // const filteredPost = post.filter(item => item.userId === 1);
   const {filteredPost, postId} = route.params;

@@ -4,8 +4,9 @@ import {useNavigation} from '@react-navigation/native';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {userSlice} from '../../store/userSlice';
+import { UserDataItem } from '../../data/userData';
 
-function ChatCard({item}) {
+function ChatCard({item}:{item: UserDataItem}) {
   const navigation = useNavigation();
 
   const dispatch = useDispatch();

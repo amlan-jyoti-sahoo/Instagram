@@ -2,7 +2,7 @@ import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useEffect} from 'react';
 import FloatingButton from '../components/Messanger/FloatingButton';
 
-const PhotoRender = ({route}) => {
+const PhotoRender = ({route}: {route: any}) => {
   const {imageUri, sendMessageHandler} = route.params;
 
   return (
@@ -18,7 +18,7 @@ const PhotoRender = ({route}) => {
         returnKeyType="done"
         onChangeText={messageInputHandler}
       /> */}
-      <FloatingButton />
+      <FloatingButton onPress={() => {}}/>
     </View>
   );
 };

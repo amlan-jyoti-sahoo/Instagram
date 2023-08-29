@@ -3,7 +3,7 @@ import React from 'react';
 import AmlanImg from '../../assets/images/Amlan.png';
 import {useNavigation} from '@react-navigation/native';
 
-function SenderImage({imageUri, message}) {
+function SenderImage({imageUri, message} : {imageUri: string, message: string}) {
   return (
     <View style={styles.chatsContainer}>
       <View style={styles.chatContainer}>
