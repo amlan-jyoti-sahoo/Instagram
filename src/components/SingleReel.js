@@ -12,7 +12,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useDispatch, useSelector} from 'react-redux';
-import {userSlice} from '../../store/userSlice';
+import {userSlice} from '../store/userSlice';
 import {reelSlice} from '../store/reelSlice';
 
 const SingleReel = ({item, index, currentIndex}) => {

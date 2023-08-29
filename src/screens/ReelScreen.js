@@ -3,8 +3,8 @@ import React, {useEffect, useRef, useState} from 'react';
 import Feather from 'react-native-vector-icons/Feather';
 import SingleReel from '../components/SingleReel';
 import {useDispatch, useSelector} from 'react-redux';
-import {postSlice} from '../../store/postSlice';
-import {userSlice} from '../../store/userSlice';
+import {postSlice} from '../store/postSlice';
+import {userSlice} from '../store/userSlice';
 
 const ReelScreen = ({route}) => {
   const {reelId} = route.params;

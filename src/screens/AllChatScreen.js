@@ -11,7 +11,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import ChatCard from '../components/Messanger/ChatCard';
 
 import {useDispatch, useSelector} from 'react-redux';
-import {userSlice} from '.././store/userSlice';
+import {userSlice} from '../store/userSlice';
 import {UserData} from '../data/userData';
 
 function AllChatScreen({navigation}) {

@@ -16,7 +16,7 @@ import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 import IconButton from '../components/Messanger/IconButton';
 import {useDispatch, useSelector} from 'react-redux';
-import {userSlice} from '.././store/userSlice';
+import {userSlice} from '../store/userSlice';
 import PhotoRender from './PhotoRender';
 
 function ChatScreen({navigation}) {
