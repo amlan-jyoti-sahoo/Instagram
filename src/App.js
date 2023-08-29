@@ -96,6 +96,7 @@ function App() {
         <BottomTab.Screen
           name="ReelScreen"
           component={ReelScreen}
+          initialParams={{reedId: 1}}
           options={{
             headerShown: false,
             headerTitle: 'reel',
