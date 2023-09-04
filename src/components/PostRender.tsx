@@ -12,6 +12,7 @@ import { PostDataItem } from '../data/postData';
 
 
 const PostRender = ({filteredPost} : {filteredPost:PostDataItem}) => {
+  const reversedPostData = [...filteredPost].reverse();
   const navigation = useNavigation();
   const renderPosts = ({item}: {item:PostDataItem}) => {
     function postPressHandler(postId: number) {
@@ -35,7 +36,7 @@ const PostRender = ({filteredPost} : {filteredPost:PostDataItem}) => {
       <FlatList
         numColumns={3}
         scrollEnabled={true}
-        data={filteredPost}
+        data={reversedPostData}
         renderItem={renderPosts}
         keyExtractor={item => item.postId}
       />

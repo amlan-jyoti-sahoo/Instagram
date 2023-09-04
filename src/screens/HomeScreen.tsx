@@ -59,7 +59,7 @@ const HomeScreen = ({navigation}: {navigation: any}) => {
       <ProfileStatus />
 
       {/*All Post Container */}
-      <Posts data={reversedPostData} postId={1}/>
+      <Posts data={reversedPostData} postId={reversedPostData.length}/>
     </SafeAreaView>
   );
 };

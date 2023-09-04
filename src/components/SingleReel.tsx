@@ -99,7 +99,7 @@ const SingleReel = ({item}: {item: ReelDataItem}) => {
             </Text>
           </View>
         </View>
-        <TouchableOpacity
+        <View
           style={{height: '100%', width: '100%', position: 'absolute'}}>
           <Video
             videoRef={videoRef}
@@ -116,7 +116,7 @@ const SingleReel = ({item}: {item: ReelDataItem}) => {
             source={item.reel.video}
             style={styles.video}
           />
-        </TouchableOpacity>
+        </View>
       </View>
     </>
   );
