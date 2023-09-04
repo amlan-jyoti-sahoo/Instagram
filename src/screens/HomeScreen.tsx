@@ -16,6 +16,7 @@ import {useSelector} from 'react-redux';
 
 const HomeScreen = ({navigation}: {navigation: any}) => {
   const post = useSelector((state: any) => state.post.postData);
+  const reversedPostData = [...post].reverse();
   return (
     <SafeAreaView style={styles.rootContainer}>
       {/* Upper Header Container */}
@@ -58,7 +59,7 @@ const HomeScreen = ({navigation}: {navigation: any}) => {
       <ProfileStatus />
 
       {/*All Post Container */}
-      <Posts data={post} postId={1}/>
+      <Posts data={reversedPostData} postId={1}/>
     </SafeAreaView>
   );
 };
