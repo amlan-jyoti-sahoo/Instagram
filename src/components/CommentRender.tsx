@@ -70,6 +70,7 @@ const CommentRender = ({selectedPost}: {selectedPost : PostDataItem}) => {
         </View>
         <TextInput
           placeholder="Add a comment.."
+          placeholderTextColor={'grey'}
           style={styles.input}
           value={inputText}
           onChangeText={handleInputChange}
@@ -98,8 +99,9 @@ const styles = StyleSheet.create({
   },
 
   menuModalContainer: {
+    width: '100%',
     padding: 15,
-    backgroundColor: 'white',
+    backgroundColor: '#ffffff',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
@@ -125,55 +127,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: '100%',
   },
-  commentsRootContainer: {
-    marginTop: 20,
-    // height: '100%',
-  },
-  singleCommentBoxContainer: {
-    height: 80,
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  postHeaderImageContainer: {
-    borderWidth: 1,
-    height: 50,
-    width: 50,
-    borderColor: '#b42727',
-    borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal: 10,
-  },
-  postHeaderImageNonStatusContainer: {
-    borderWidth: 1,
-    height: 50,
-    width: 50,
-    borderColor: '#b1abab',
-    borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-
-    marginHorizontal: 10,
-  },
-  postHeaderImage: {
-    height: 45,
-    width: 45,
-    borderRadius: 50,
-  },
-  commentTextContainer: {
-    width: '75%',
-  },
-  commentTextInnerContainer: {
-    flexDirection: 'row',
-    width: 120,
-    justifyContent: 'space-between',
-  },
-  commentRightSideContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  
   bottomContainer: {
     marginTop: 10,
     flexDirection: 'row',
@@ -186,7 +140,7 @@ const styles = StyleSheet.create({
   //input
 
   input: {
-    width: 280,
+    width: '70%',
     height: 40,
     borderColor: '#000000',
     borderRadius: 50,

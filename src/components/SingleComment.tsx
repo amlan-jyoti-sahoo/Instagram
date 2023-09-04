@@ -128,6 +128,7 @@ const styles = StyleSheet.create({
   singleCommentBoxContainer: {
     height: 80,
     width: '100%',
+    marginRight: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -158,11 +159,11 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   commentTextContainer: {
-    width: '75%',
+    width: '70%',
   },
   commentTextInnerContainer: {
     flexDirection: 'row',
-    width: 120,
+    width: 110,
     justifyContent: 'space-between',
   },
   commentRightSideContainer: {
