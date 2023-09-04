@@ -18,16 +18,23 @@ import {postSlice} from '../../store/postSlice';
 import {userSlice} from '../../store/userSlice';
 import PostEllipsisMenu from './PostEllipsisMenu';
 import CommentRender from '../CommentRender';
+import SingleComment from '../SingleComment';
 
 const Posts = ({data, postId}: {data : any, postId : any}) => {
   const dispatch = useDispatch();
 
   const user = useSelector((state : any) => state.user.userData);
+  const post = useSelector((state : any) => state.post.postData);
   const selectedPost = useSelector((state : any) => state.post.selectedPost);
 
   const [ellipsisMenuModal, setEllipsisMenuModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
-
+  // const [isLiked, setIsLiked] = useState(
+  //   selectedPost.post.isLiked,
+  // );
+  // const [isBookmarked, setIsBookmarked] = useState(
+  //   selectedPost.post.isBookmarked,
+  // );
   interface postItem {
     postId: string; 
   }
@@ -52,7 +59,10 @@ const Posts = ({data, postId}: {data : any, postId : any}) => {
       dispatch(userSlice.actions.showStory(item.userId));
     }
     const postUserIndex = user.findIndex((user : any) => user.userId === item.userId);
+    const filteredPostIndex = post.findIndex((post : any) => post.postId === item.postId);
     const postUser = user[postUserIndex];
+    const currPost = post[filteredPostIndex];
+    console.log("🚀 ~ file: Posts.tsx:65 ~ renderPosts ~ currPost:", currPost)
     function likePressHandler() {
       dispatch(postSlice.actions.setLike(item.postId));
     }
@@ -69,6 +79,7 @@ const Posts = ({data, postId}: {data : any, postId : any}) => {
       dispatch(postSlice.actions.setSelectedPost(item.postId));
       console.log(selectedPost);
     }
+    // <SingleComment item={item} />
     return (
       <View style={styles.PostRootCotainer}>
         <View style={styles.postHeaderContainer}>
@@ -104,9 +115,9 @@ const Posts = ({data, postId}: {data : any, postId : any}) => {
           <View style={styles.postBottomInnerLeftContainer}>
             <TouchableOpacity onPress={likePressHandler}>
               <MaterialCommunityIcons
-                name={item.post.isLiked ? 'cards-heart' : 'cards-heart-outline'}
+                name={currPost.post.isLiked ? 'cards-heart' : 'cards-heart-outline'}
                 size={30}
-                color={item.post.isLiked ? '#f01717' : 'black'}
+                color={currPost.post.isLiked ? '#f01717' : 'black'}
               />
             </TouchableOpacity>
             <TouchableOpacity onPress={commentPressHandler}>
@@ -122,14 +133,14 @@ const Posts = ({data, postId}: {data : any, postId : any}) => {
           <TouchableOpacity onPress={bookMarkPressHandler}>
             <MaterialCommunityIcons
               style={{marginRight: 10}}
-              name={item.post.isBookmarked ? 'bookmark' : 'bookmark-outline'}
+              name={currPost.post.isBookmarked ? 'bookmark' : 'bookmark-outline'}
               size={30}
               color={'black'}
             />
           </TouchableOpacity>
         </View>
         <Text style={[styles.textBold, {marginLeft: 10}]}>
-          {`${item.post.likes} likes`}
+          {`${currPost.post.likes} likes`}
         </Text>
       </View>
     );
