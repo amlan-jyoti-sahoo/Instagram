@@ -1,6 +1,7 @@
 import {
   Image,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   TouchableOpacity,
   View,
@@ -19,6 +20,7 @@ const HomeScreen = ({navigation}: {navigation: any}) => {
   const reversedPostData = [...post].reverse();
   return (
     <SafeAreaView style={styles.rootContainer}>
+     
       {/* Upper Header Container */}
       <View style={styles.upperHeaderContainer}>
         <Image
@@ -54,12 +56,19 @@ const HomeScreen = ({navigation}: {navigation: any}) => {
           </View>
         </View>
       </View>
+      <ScrollView
+  directionalLockEnabled={true}
+  alwaysBounceVertical={false}
+>
+  <View>
 
       {/* ProfileStatus Container */}
       <ProfileStatus />
 
       {/*All Post Container */}
       <Posts data={reversedPostData} postId={reversedPostData.length}/>
+  </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
